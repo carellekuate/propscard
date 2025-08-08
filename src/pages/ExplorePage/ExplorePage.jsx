@@ -1,18 +1,18 @@
 import React from 'react';
 import './ExplorePageStyles.css';
 import ProductCard from '../../components/ProductCard/ProductCard';
-import img1 from '../../Assets/images/fa2.PNG'
-import img2 from '../../Assets/images/fb1.PNG'
-import img3 from '../../Assets/images/fo.PNG'
-import img4 from '../../Assets/images/fg.PNG'
-import img5 from '../../Assets/images/fi.PNG'
-import img6 from '../../Assets/images/ft.PNG'
-import img7 from '../../Assets/images/fy.PNG'
-import img8 from '../../Assets/images/fz.PNG'
-import img9 from '../../Assets/images/fs.PNG'
-import img10 from '../../Assets/images/fab.PNG' 
-import img11 from '../../Assets/images/fe.PNG'
-import img12 from '../../Assets/images/fk.PNG'    
+import img1 from '../../assets/images/fa2.PNG'
+import img2 from '../../assets/images/fb1.PNG'
+import img3 from '../../assets/images/fo.PNG'
+import img4 from '../../assets/images/fg.PNG'
+import img5 from '../../assets/images/fi.PNG'
+import img6 from '../../assets/images/ft.PNG'
+import img7 from '../../assets/images/fy.PNG'
+import img8 from '../../assets/images/fz.PNG'
+import img9 from '../../assets/images/fs.PNG'
+import img10 from '../../assets/images/fab.PNG' 
+import img11 from '../../assets/images/fe.PNG'
+import img12 from '../../assets/images/fk.PNG'    
 
 
 const cardTemplates = [
