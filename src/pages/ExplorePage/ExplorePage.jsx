@@ -5,12 +5,14 @@ import img1 from '../../Assets/images/fa2.PNG'
 import img2 from '../../Assets/images/fb1.PNG'
 import img3 from '../../Assets/images/fo.PNG'
 import img4 from '../../Assets/images/fg.PNG'
-import img5 from '../../Assets/images/fs.PNG'
+import img5 from '../../Assets/images/fi.PNG'
 import img6 from '../../Assets/images/ft.PNG'
 import img7 from '../../Assets/images/fy.PNG'
-import img8 from '../../Assets/images/fc1.PNG'
-import img9 from '../../Assets/images/fi.PNG'
-import img10 from '../../Assets/images/fab.PNG'   
+import img8 from '../../Assets/images/fz.PNG'
+import img9 from '../../Assets/images/fs.PNG'
+import img10 from '../../Assets/images/fab.PNG' 
+import img11 from '../../Assets/images/fe.PNG'
+import img12 from '../../Assets/images/fk.PNG'    
 
 
 const cardTemplates = [
@@ -22,8 +24,10 @@ const cardTemplates = [
     { id: 6, img: img6, title: "Vintage", price: "1.999fcfa" },
     { id: 7, img: img7, title: "Moderne Rouge", price: "1.000fcfa" },
     { id: 8, img: img8, title: "Classique", price: "2.000fcfa" },
-    { id: 9, img: img9, title: "Artistique", price: "999fcfa" },
-    { id: 10, img: img10, title: "Design Minimal", price: "2.000fcfa" }
+    { id: 9, img: img9, title: "Artistique", price: "1200fcfa" },
+    { id: 10, img: img10, title: "Design Minimal", price: "2.000fcfa" },
+    { id: 11, img: img11, title: "Vintage", price: "1.500fcfa" },
+    { id: 12, img: img12, title: "Moderne Rouge", price: "2.100fcfa" }
   ];
   
   export default function ExplorePage() {
