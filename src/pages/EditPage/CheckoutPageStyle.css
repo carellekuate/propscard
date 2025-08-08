@@ -1,0 +1,103 @@
+/* Style général de la page */
+.checkoutContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.checkoutContainer h1 {
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2.2rem;
+}
+
+/* Récapitulatif de commande */
+.orderSummary {
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  padding: 30px;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.orderSummary h2 {
+  color: #2c3e50;
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  border-bottom: 1px solid #dfe6e9;
+  padding-bottom: 10px;
+}
+
+.orderSummary p {
+  font-size: 1.1rem;
+  color: #34495e;
+  margin: 15px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.orderSummary p strong {
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.orderSummary p:last-child {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #4a6fa5;
+  margin-top: 25px;
+}
+
+/* Formulaire de paiement */
+.paymentForm {
+  background-color: white;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border: 1px solid #dfe6e9;
+}
+
+/* Bouton de paiement */
+.payButton {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(to right, #4CAF50, #3e8e41);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+}
+
+.payButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .checkoutContainer {
+    padding: 20px 15px;
+  }
+  
+  .checkoutContainer h1 {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+  }
+  
+  .orderSummary, .paymentForm {
+    padding: 20px;
+  }
+  
+  .orderSummary p {
+    font-size: 1rem;
+  }
+}

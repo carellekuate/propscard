@@ -1,24 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import EditPage from './pages/EditPage/EditPage';
+import PrintOptionPage from './pages/EditPage/PrintOptionPage';
+import CheckoutPage from './pages/EditPage/CheckoutPage'; // Import manquant ajouté
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<EditPage />} />
+        <Route path="/print-options" element={<PrintOptionPage />} />
+        <Route path="/checkout" element={<CheckoutPage />} /> {/* Balise Route corrigée */}
+      </Routes>
+    </Router>
   );
 }
 
