@@ -2,8 +2,10 @@ import "./EditPageStyles.css";
 import img1 from "../../assets/images/1.png";
 import img2 from "../../assets/images/2.png";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function EditPage() {
+  const navigate = useNavigate();  // <- hook en haut du composant
   const [formData, setFormData] = useState({
     jobTitle: "Codeur",
     name: "User",
@@ -23,7 +25,9 @@ export default function EditPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert("Votre carte de visite a été enregistrée avec succès!");
+   navigate("/print-options", {
+      state: { cardData: formData },
+    });
     // Ici vous pourriez ajouter la logique pour sauvegarder les données
   };
 
@@ -123,8 +127,8 @@ export default function EditPage() {
             </label>
           </div>
 
-          <button type="submit" className="formButton">
-            Générer ma carte
+          <button type="submit" className="formButton"  onClick={handleSubmit}>
+            Prévisualisez ma carte
           </button>
         </form>
       </div>

@@ -1,11 +1,17 @@
-import React from 'react'; // Importing React library
-import './App.css';
-import EditPage from './pages/EditPage/EditPage.jsx'; // Importing the EditPage component
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import EditPage from './pages/EditPage/EditPage';
+import PrintOptionPage from './pages/EditPage/PrintOptionPage';
+import CheckoutPage from './pages/EditPage/CheckoutPage'; // Import manquant ajouté
+
 function App() {
   return (
-    <div>
-      <EditPage />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<EditPage />} />
+        <Route path="/print-options" element={<PrintOptionPage />} />
+        <Route path="/checkout" element={<CheckoutPage />} /> {/* Balise Route corrigée */}
+      </Routes>
+    </Router>
   );
 }
 
