@@ -1,0 +1,224 @@
+.editPageContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 40px;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+  gap: 40px;
+}
+
+.formContainer {
+  flex: 1;
+  max-width: 500px;
+  padding: 30px;
+  border-radius: 16px;
+  background: white;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 40px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.formHeader {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.formTitle {
+  font-size: 28px;
+  color: #2c3e50;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.formSubtitle {
+  font-size: 16px;
+  color: #7f8c8d;
+  line-height: 1.5;
+  font-weight: normal;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.formLabel {
+  font-size: 16px;
+  font-weight: 600;
+  color: #34495e;
+}
+
+.formInput {
+  width: 90%;
+  padding: 14px 16px;
+  border: 2px solid #e0e3e7;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.formInput:hover {
+  border-color: #a0b3c8;
+}
+
+.formInput:focus {
+  outline: none;
+  border-color: #4a6fa5;
+  box-shadow: 0 0 0 3px rgba(74, 111, 165, 0.2);
+}
+
+.formInput::placeholder {
+  color: #bdc3c7;
+}
+
+.formButton {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(to right, #4a6fa5, #3a5a80);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+  box-shadow: 0 4px 15px rgba(74, 111, 165, 0.3);
+}
+
+.formButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(74, 111, 165, 0.4);
+}
+
+.cardPreview {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #e0e3e7;
+}
+
+.cardVerso,
+.cardRecto {
+  width: 100%;
+  height: 500px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.cardVerso:hover,
+.cardRecto:hover {
+  transform: translateY(-5px) scale(1.02);
+}
+
+.cardVerso img,
+.cardRecto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cardVerso div {
+  position: absolute;
+  color: black;
+  margin: 55px;
+  margin-top: 240px;
+  margin-left: 110px;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+@media (max-width: 1024px) {
+  .editPageContainer {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .formContainer {
+    position: static;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .cardPreview {
+    flex-direction: row;
+    max-width: 100%;
+    gap: 20px;
+  }
+
+  .cardVerso,
+  .cardRecto {
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .cardPreview {
+    flex-direction: column;
+  }
+
+  .cardVerso,
+  .cardRecto {
+    max-width: 350px;
+  }
+}
+.formDataName {
+  font-size: 50px;
+  min-height:75px ;
+  font-weight: bold;
+  color: #0867c7;
+  margin-top: -200px;
+}
+.formDataJob {
+  font-size: 30px;
+  min-height:30px ;
+   color: black;
+  margin-top: -40px;
+  font-weight: bold;
+}
+.formDataLocation {
+  font-size: 30px;
+
+   color: white;
+    margin-top: -10px;
+    
+}
+.formDataPhone{
+    font-size: 30px;
+   min-height:40px ;
+    color: white;
+    margin-top: 90px;
+    
+}
+.formDataEmail {
+  font-size: 30px;
+    min-height:42px ;
+  color: white;
+    margin-top: -10px;
+    
+}   
+.formDataSite {
+  font-size: 30px;
+  color: white;
+ margin-top: -5px;
+ min-height: 35px;
+
+}   
