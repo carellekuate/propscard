@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import ajouté
 import './ProductCard.css';
 import PreviewModal from '../PreviewModal/PreviewModal';
 
 const ProductCard = ({ template }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate(); // Hook de navigation
+
+  // Fonction pour gérer la personnalisation
+  const handleCustomize = () => {
+    navigate('/edit', { state: { template } });
+  };
 
   return (
     <>
@@ -29,7 +36,12 @@ const ProductCard = ({ template }) => {
         <div className="card-info">
           <h3>{template.title}</h3>
           <p className="price">{template.price}</p>
-          <button className="customize-btn">Personnaliser</button>
+          <button 
+            className="customize-btn" 
+            onClick={handleCustomize} // Ajout de l'handler
+          >
+            Personnaliser
+          </button>
         </div>
       </div>
 

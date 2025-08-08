@@ -16,7 +16,8 @@ import avatar1 from "../../assets/images/userImage.png";
 
 // Importation des liens de navigation
 import { navLinks } from "../../constants/NavLinks";
-
+// Importation de Link pour la navigation
+import { Link } from "react-router-dom";
 function HomePage() {
   return (
     <div className="all">
@@ -50,21 +51,29 @@ function HomePage() {
         <h2>Cartes de visite les plus récentes</h2>
         <div className="card-list">
           <div className="card-item">
-            <img src={card1} alt="Carte de visite récente 1" />
+            <Link to="/explore">
+              <img src={card1} alt="Carte de visite récente 1" />
+            </Link>
             <div className="card-details">
               <h3>Design minimaliste noir</h3>
               <p>Par Jean Dupont</p>
             </div>
           </div>
+          
           <div className="card-item">
-            <img src={card1} alt="Carte de visite récente 2" />
+            <Link to="/explore">
+              <img src={card1} alt="Carte de visite récente 2" />
+            </Link>
             <div className="card-details">
               <h3>Design créatif pour artiste</h3>
               <p>Par Marie Curie</p>
             </div>
           </div>
+          
           <div className="card-item">
-            <img src={card1} alt="Carte de visite récente 3" />
+            <Link to="/explore">
+              <img src={card1} alt="Carte de visite récente 3" />
+            </Link>
             <div className="card-details">
               <h3>Design corporate élégant</h3>
               <p>Par Paul Durand</p>
