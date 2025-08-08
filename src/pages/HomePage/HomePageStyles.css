@@ -1,0 +1,307 @@
+.all {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.section {
+  padding: 60px 5%;
+  text-align: center;
+}
+
+/* Variables pour un style cohérent */
+:root {
+  --primary-color: #32327b;
+  --secondary-color: #f0f0f0;
+  --text-color: #333;
+  --light-text-color: #f5f5f5;
+  --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Section Héro */
+.hero-section {
+  position: relative;
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--light-text-color);
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-content h1 {
+  font-size: 3.5rem;
+  margin-bottom: 10px;
+}
+
+.hero-content .slogan {
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+}
+
+.search-bar {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.search-bar input {
+  width: 400px;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.search-bar button {
+  padding: 15px 30px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.search-bar button:hover {
+  background-color: #2a2a6b;
+}
+
+/* Section Cartes Récentes */
+.recent-cards-section h2,
+.user-reviews-section h2,
+.offers-comparison-section h2 {
+  font-size: 2.5rem;
+  color: var(--text-color);
+  margin-bottom: 40px;
+}
+
+.card-list {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.card-item {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: var(--box-shadow);
+  overflow: hidden;
+  width: 300px;
+  text-align: left;
+}
+
+.card-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-details {
+  padding: 15px;
+}
+
+.card-details h3 {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.card-details p {
+  color: #777;
+  font-size: 0.9rem;
+}
+
+/* Section Avis des utilisateurs */
+.user-reviews-section {
+  background-color: var(--secondary-color);
+}
+
+.review-list {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.review-item {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: var(--box-shadow);
+  max-width: 350px;
+  text-align: left;
+}
+
+.review-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.review-header img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.review-header h4 {
+  margin: 0;
+}
+
+.review-text {
+  font-style: italic;
+  color: #555;
+}
+
+/* Section Newsletter */
+.newsletter-section {
+  background-color: var(--primary-color);
+  color: var(--light-text-color);
+}
+
+.newsletter-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.newsletter-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.newsletter-content p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.newsletter-form {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.newsletter-form input {
+  padding: 15px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  width: 350px;
+}
+
+.newsletter-form button {
+  padding: 15px 30px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.newsletter-form button:hover {
+  background-color: #2980b9;
+}
+
+/* Section Comparaison des offres */
+.offers-comparison-section {
+  background-color: var(--secondary-color);
+}
+
+.comparison-table {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.offer-column {
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: var(--box-shadow);
+  width: 350px;
+  text-align: left;
+}
+
+.offer-column h3 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: var(--primary-color);
+}
+
+.offer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.offer-column li {
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.offer-column li:last-child {
+  border-bottom: none;
+}
+
+.unavailable {
+  text-decoration: line-through;
+  color: #999;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-content .slogan {
+    font-size: 1.2rem;
+  }
+
+  .search-bar,
+  .newsletter-form {
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+  }
+
+  .search-bar input,
+  .newsletter-form input {
+    width: 80%;
+  }
+
+  .card-list,
+  .review-list,
+  .comparison-table {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card-item,
+  .review-item,
+  .offer-column {
+    width: 90%;
+  }
+}
