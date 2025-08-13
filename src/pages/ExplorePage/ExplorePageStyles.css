@@ -26,12 +26,14 @@
     gap: 80px;
     padding: 50px 0;
     background-color: #f3f7fa;
+    object-fit: cover;
+   width: 100%;
   }
   
   /* Carte de produit */
   .product-card {
-    background: rgb(238, 207, 207);
-    border-radius: 10px;
+   
+    border-radius:10px;
     width: 80mm;
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
