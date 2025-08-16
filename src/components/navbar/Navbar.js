@@ -1,5 +1,6 @@
 // Importation des dépendances
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 
 // Importation des icônes
 import heartIcon from "../../assets/icons/heart.png";
@@ -13,7 +14,7 @@ import "./NavbarStyles.css";
 
 const Navbar = ({ navLinks}) => {
   const [isActive, setIsActive] = useState(false);
-  const [activeLink, setActiveLink] = useState("Home");
+  const location = useLocation();
   const [language, setLanguage] = useState("en");
 
   return (
@@ -31,13 +32,16 @@ const Navbar = ({ navLinks}) => {
               </div>
 
               <ul className={`nav-links ${isActive ? "active" : ""}`}>
-                  {navLinks.map((link) => (
-                      <li key={link.name} className={activeLink === link.name ? "active" : ""}>
-                          <a href={link.path} onClick={() => setActiveLink(link.name)}>
-                              {link.name}
-                          </a>
-                      </li>
-                  ))}
+                {navLinks.map((link) => (
+                    <li 
+                    key={link.name} 
+                    className={location.pathname === link.path ? "active" : ""}
+                    >
+                    <a href={link.path}>
+                        {link.name}
+                    </a>
+                    </li>
+                ))}
               </ul>
 
               <div className="right-container">

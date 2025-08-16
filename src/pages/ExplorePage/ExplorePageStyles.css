@@ -1,34 +1,36 @@
 /* Style global de la page */
+
+/* Supprimez la déclaration .navbar dupliquée */
 .products-page {
-    max-width: 2900px;
-    margin: 5 auto;
-    padding: 50px 20px;
-    text-align: center;
-    align-items: center;
-  }
   
-  .products-page h1 {
-    font-size: 2.5rem;
-    color: #2c3e50;
-    margin-bottom: 10px;
-  }
+  margin: 0 auto;
+  padding: 80px 20px 50px; /* Réduisez le padding-top à 80px */
+  text-align: center;
+  align-items: center;
   
+
+}
+
+.products-page h2 {
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin-bottom: 10px;
+  position: relative; /* Supprimez top: 500px */
+  
+}
+
+footer{
+  position: relative;
+  object-fit: cover;
+}
   .subtitle {
     color: #7f8c8d;
     margin-bottom: 40px;
     font-size: 1.1rem;
+    
   }
   
-  /* Grille de produits */
-  .grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 250px));
-    gap: 80px;
-    padding: 50px 0;
-    background-color: #f3f7fa;
-    object-fit: cover;
-   width: 100%;
-  }
+
   
   /* Carte de produit */
   .product-card {
@@ -38,7 +40,9 @@
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
   }
+  
   
   .product-card:hover {
     transform: translateY(-5px);
@@ -50,6 +54,7 @@
     position: relative;
     padding-top: 100%; /* Ratio carré 1:1 */
     overflow: hidden;
+    
   }
   
   .card-image-container img {
@@ -59,6 +64,7 @@
     width: 85mm;
     height: 5mm;
     object-fit: cover;
+    
   }
   
   .preview-btn {
@@ -99,11 +105,54 @@
     margin: 0 0 15px;
   }
   
-  .customize-btn {
+  .card-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 15px;
+  justify-items: center; /* Centre les cartes horizontalement */
+  padding: 0 20px; /* Ajoute un padding pour éviter les débordements */
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto; /* Centre le conteneur */
+  
+  }
+
+  .card-item {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  align-items: stretch; /* Ajoutez cette ligne */
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;  /* Espacement réduit entre les éléments */
+  width: 325px; /* Prend toute la largeur disponible */
+  max-width: 400px;
+  
+  }
+
+  .card-preview {
+  flex: 1; /* Ajoutez cette ligne */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Alignement en haut */
+  overflow: hidden;
+  }
+
+  
+  .card-details {
+  padding: 5px 10px 10px; /* Top | Horizontal | Bottom */
+  text-align: center;
+ 
+  } 
+  
+  .custom-button {
     background: #3498db;
     color: white;
     border: none;
-    padding: 10px 20px;
+    margin-top: 8px; /* Espacement réduit au-dessus du bouton */
+    padding: 8px 16px;
     border-radius: 5px;
     cursor: pointer;
     font-weight: 600;
@@ -111,10 +160,30 @@
     width: 100%;
   }
   
-  .customize-btn:hover {
+  .custom-button:hover {
     background: #2980b9;
   }
   
+  .custom-button.loading {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(214, 212, 212, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
   /* Responsive */
   @media (max-width: 768px) {
     .grid-container {

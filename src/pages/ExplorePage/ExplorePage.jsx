@@ -1,46 +1,105 @@
 import React from 'react';
 import './ExplorePageStyles.css';
-import ProductCard from '../../components/ProductCard/ProductCard';
-import img1 from '../../Assets/images/fa2.PNG'
-import img2 from '../../Assets/images/fb1.PNG'
-import img3 from '../../Assets/images/fo.PNG'
-import img4 from '../../Assets/images/fg.PNG'
-import img5 from '../../Assets/images/fi.PNG'
-import img6 from '../../Assets/images/ft.PNG'
-import img7 from '../../Assets/images/fy.PNG'
-import img8 from '../../Assets/images/fz.PNG'
-import img9 from '../../Assets/images/fs.PNG'
-import img10 from '../../Assets/images/fab.PNG' 
-import img11 from '../../Assets/images/fe.PNG'
-import img12 from '../../Assets/images/fk.PNG'    
+import { FaBeer } from 'react-icons/fa';  // Importe une icône de FontAwesome
+import img1 from '../../assets/images/fa2.PNG';
+import img2 from '../../assets/images/fb1.PNG';
+import img3 from '../../assets/images/fo.PNG';
+import img4 from '../../assets/images/fg.PNG';
+import img5 from '../../assets/images/fi.PNG';
+import img6 from '../../assets/images/ft.PNG';
+import img7 from '../../assets/images/fy.PNG';
+import img8 from '../../assets/images/fz.PNG';
+import img9 from '../../assets/images/fs.PNG';
+import img10 from '../../assets/images/fab.PNG'; 
+import img11 from '../../assets/images/fe.PNG';
+import img12 from '../../assets/images/fk.PNG';    
+import { navLinks } from '../../constants/NavLinks';
+import Navbar from '../../components/navbar/Navbar';
+import Footer from '../../components/footer/Footer';
+import { Link, useNavigate } from 'react-router-dom';
+
+import BusinessCardRecto1 from '../../components/CardTemplates/BusinessCardRecto1';
+import BusinessCardVecto1  from '../../components/CardTemplates/BusinessCardVerso1';
+import BusinessCardRecto2 from '../../components/CardTemplates/BusinessCardRecto2';
+import BusinessCardVecto2  from '../../components/CardTemplates/BusinessCardVerso2';
+import BusinessCardRecto3 from '../../components/CardTemplates/BusinessCardRecto3';
+import BusinessCardVecto3  from '../../components/CardTemplates/BusinessCardVerso3';
+
+import Template1Front from '../../components/CardTemplates/Template1Front';
+import Template2Front from '../../components/CardTemplates/Template2Front';
+import Template1Back from '../../components/CardTemplates/Template1Back';
+import Template2Back from '../../components/CardTemplates/Template2Back';
+
+export default function ExplorePage() {
+  const navigate = useNavigate();
 
 
-const cardTemplates = [
-    { id: 1, img: img1, title: "Moderne Élégant", price: "1.900fcfa" },
-    { id: 2, img: img2, title: "Minimaliste Noir", price: "2.500fcfa" },
-    { id: 3, img: img3, title: "Créatif Couleurs", price: "1.900fcfa" },
-    { id: 4, img: img4, title: "Professionnel Bleu", price: "2.799fcfa" },
-    { id: 5, img: img5, title: "Luxe Doré", price: "2.499fcfa" },
-    { id: 6, img: img6, title: "Vintage", price: "1.999fcfa" },
-    { id: 7, img: img7, title: "Moderne Rouge", price: "1.000fcfa" },
-    { id: 8, img: img8, title: "Classique", price: "2.000fcfa" },
-    { id: 9, img: img9, title: "Artistique", price: "1200fcfa" },
-    { id: 10, img: img10, title: "Design Minimal", price: "2.000fcfa" },
-    { id: 11, img: img11, title: "Vintage", price: "1.500fcfa" },
-    { id: 12, img: img12, title: "Moderne Rouge", price: "2.100fcfa" }
-  ];
+  const cardDesigns = [
+     { 
+      id: 1, 
+      title: "Design minimaliste noir",
+      price: "500 fcfa",
+      component: BusinessCardRecto1,
+      backComponent: BusinessCardVecto1// Ajout du verso
+    },
+    { 
+      id: 2, 
+      title: "Design créatif pour artiste",
+      price: "750 fcfa",
+      component: BusinessCardRecto2,
+      backComponent: BusinessCardVecto2
+    },
+     { 
+      id: 3, 
+      title: "Design minimaliste noir",
+      price: "500 fcfa",
+      component: BusinessCardRecto3,
+      backComponent: BusinessCardVecto3// Ajout du verso
+    },
+    { 
+      id: 4, 
+      title: "Design créatif pour artiste",
+      price: "750 fcfa",
+      component: BusinessCardVecto1,
+      backComponent: BusinessCardRecto1
+    },
   
-  export default function ExplorePage() {
-    return (
+
+  ];
+
+  const handleClick = (design) => {
+  navigate("/edit", { 
+    state: { 
+      templateId: design.id // ✅ Seulement l'ID (sérialisable)
+    } 
+  });
+};
+
+  return (
+    <div className="all">
+      <Navbar navLinks={navLinks} />
       <div className="products-page">
-        <h1>Nos Modèles de Cartes de Visite</h1>
+        <h2>Nos Modèles de Cartes de Visite</h2>
         <p className="subtitle">Choisissez un design qui représente votre entreprise</p>
-        
-        <div className="grid-container">
-          {cardTemplates.map((template) => (
-            <ProductCard key={template.id} template={template} />
-          ))}
+
+        <div className="card-list">
+            {cardDesigns.map((design) => (
+              <div className="card-item" key={design.id} style={{ alignSelf: 'start' }}>
+                <div className="card-preview" onClick={() => handleClick(design)}>
+                  <design.component />
+                </div>
+                <div className="card-details">
+                  <h3>{design.title}</h3>
+                  <p className="price">{design.price}</p>
+                  <button className="custom-button" onClick={() => handleClick(design)}>
+                    Personnaliser
+                  </button>
+                </div>
+              </div>
+            ))}
         </div>
       </div>
-    );
-  }
+      <Footer />
+    </div>  
+  );
+}

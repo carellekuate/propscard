@@ -24,7 +24,7 @@
     margin-bottom: 20px;
 }
 
-.footer-section h2 {
+.footer-section h3 {
     color: #ecf0f1;
     margin-bottom: 15px;
     font-size: 1.2em;
@@ -34,7 +34,12 @@
     font-size: 0.9em;
     line-height: 1.6;
 }
-
+.footer-description {
+    color: black;
+}
+.footer-copy {
+    color: black;
+}
 .footer-section ul {
     list-style: none;
     padding: 0;

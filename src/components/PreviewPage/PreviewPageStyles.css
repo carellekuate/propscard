@@ -1,0 +1,229 @@
+.preview-container {
+  max-width: 750px;
+  margin: 0 auto;
+  padding: 2rem;
+  top: 50px;
+  position: relative;
+  text-align: center;
+  background-color: #eff1f1;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+}
+
+.card-display {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 3rem 0;
+  flex-wrap: wrap;
+}
+
+.card-side {
+  flex: 0 1 auto;
+  min-width: 300px;
+  max-width: 400px;
+  margin-bottom: 2rem;
+}
+
+.card-side h3 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.custom-button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  min-width: 200px;
+}
+
+.download-btn {
+  background: #3498db;
+  color: white;
+}
+
+.order-btn {
+  background: #2ecc71;
+  color: white;
+}
+
+.download-btn:hover {
+  background: #2980b9;
+}
+
+.order-btn:hover {
+  background: #27ae60;
+}
+
+@media (max-width: 768px) {
+  .action-buttons {
+    flex-direction: column;
+  }
+  
+  .card-display {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .custom-button {
+    width: 100%;
+  }
+}
+
+
+
+.preview-page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.preview-page-container h1 {
+  color: #2c3e50;
+  margin-bottom: 2rem;
+}
+
+.card-preview-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+  height: 100px;
+}
+
+.card-front, .card-back {
+  flex: 1;
+  max-width: 400px;
+  max-height: 250px;
+}
+
+.card-front h3, .card-back h3 {
+  color: #34495e;
+  margin-bottom: 1rem;
+}
+
+
+.download-btn.png {
+  background: #3498db;
+  color: white;
+}
+
+.download-btn.pdf {
+  background: #e74c3c;
+  color: white;
+}
+
+.order-btn {
+  background: #2ecc71;
+  color: white;
+}
+
+.download-btn:hover {
+  opacity: 0.9;
+}
+
+.order-btn:hover {
+  background: #27ae60;
+}
+
+.preview-container {
+  max-width: 750px;
+  margin: 0 auto;
+  padding: 2rem;
+  top: 50px;
+  position: relative;
+  text-align: center;
+  background-color: #eff1f1;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+
+}
+
+.error-message {
+  color: #e74c3c;
+  text-align: center;
+  padding: 2rem;
+}
+
+.card-display {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 3rem 0;
+  flex-wrap: wrap;
+}
+
+.card-side {
+  flex: 0 1 auto;
+  min-width: 300px;
+  max-width: 400px;
+  margin-bottom: 2rem;
+  
+}
+
+.card-side h3 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.download-btn, .order-btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.download-btn {
+  background: #3498db;
+  color: white;
+}
+
+.order-btn {
+  background: #2ecc71;
+  color: white;
+}
+
+.price-info {
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  color: #2c3e50;
+}
+
+
+@media (max-width: 768px) {
+  .action-buttons {
+    flex-direction: column;
+  }
+  
+  .card-display {
+    flex-direction: column;
+    align-items: center;
+  }
+  .download-btn, .order-btn {
+    width: 100%;
+  }
+  
+}

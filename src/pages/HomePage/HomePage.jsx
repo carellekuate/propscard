@@ -3,16 +3,27 @@ import "./HomePageStyles.css";
 
 // Importation de l'image d'arrière-plan
 import heroBackground from "../../assets/images/heroBackground.webp";
+import slide1 from "../../assets/images/heroBackground.webp";
+import slide2 from '../../assets/images/mockup6.jpg';
+import slide3 from '../../assets/images/mockup3.jpg';
+import slide4 from '../../assets/images/mockup4.jpg';
+
+
 
 // Importation des images de cartes
-import card1 from "../../assets/images/Card.webp";
+import card1 from "../../assets/images/fab.PNG";
+import card2 from '../../assets/images/fb1.PNG';
+import card3 from '../../assets/images/fi.PNG'
 
 // Importations des composantes
 import Footer from "../../components/footer/Footer";
 import Navbar from "../../components/navbar/Navbar";
 
 // Importation des avatars pour les avis
-import avatar1 from "../../assets/images/userImage.png";
+import avatar1 from "../../assets/images/fab.PNG";
+import avatar2 from '../../assets/images/fb1.PNG';
+import avatar3 from '../../assets/images/fi.PNG';
+
 
 // Importation des liens de navigation
 import { navLinks } from "../../constants/NavLinks";
@@ -21,20 +32,41 @@ import { Link } from "react-router-dom";
 function HomePage() {
   return (
     <div className="all">
-      <header>
+      
+      <header className="header-title">
         <Navbar navLinks={navLinks} />
       </header>
 
       {/* Section Héro */}
-      <div
-        className="hero-section"
-        style={{ backgroundImage: `url(${heroBackground})` }}
-      >
+      {/* Section Héro avec diaporama */}
+      <div className="hero-section">
+        {/* Conteneur du diaporama */}
+        <div className="hero-slider">
+          <div 
+            className="slide" 
+            style={{ backgroundImage: `url(${slide1})` }}
+          ></div>
+          <div 
+            className="slide" 
+            style={{ backgroundImage: `url(${slide2})` }}
+          ></div>
+          <div 
+            className="slide" 
+            style={{ backgroundImage: `url(${slide3})` }}
+          ></div>
+          <div 
+            className="slide" 
+            style={{ backgroundImage: `url(${slide4})` }}
+          ></div>
+        </div>
+        
+        {/* Overlay sombre */}
+        <div className="hero-section::before"></div>
         <div className="hero-content">
-          <h1>Créez une première impression mémorable</h1>
+          <h1> <span className="name"> Créez une première impression mémorable</span> </h1>
           <p className="slogan">
-            Concevez des cartes de visite qui reflètent votre identité
-            professionnelle.
+           <span className="name">  Concevez des cartes de visite qui reflètent votre identité
+            professionnelle.</span>
           </p>
           <div className="search-bar">
             <input
@@ -56,27 +88,27 @@ function HomePage() {
             </Link>
             <div className="card-details">
               <h3>Design minimaliste noir</h3>
-              <p>Par Jean Dupont</p>
+              <p></p>
             </div>
           </div>
           
           <div className="card-item">
             <Link to="/explore">
-              <img src={card1} alt="Carte de visite récente 2" />
+              <img src={card2} alt="Carte de visite récente 2" />
             </Link>
             <div className="card-details">
               <h3>Design créatif pour artiste</h3>
-              <p>Par Marie Curie</p>
+              <p></p>
             </div>
           </div>
           
           <div className="card-item">
             <Link to="/explore">
-              <img src={card1} alt="Carte de visite récente 3" />
+              <img src={card3} alt="Carte de visite récente 3" />
             </Link>
             <div className="card-details">
               <h3>Design corporate élégant</h3>
-              <p>Par Paul Durand</p>
+              <p></p>
             </div>
           </div>
         </div>
@@ -98,7 +130,7 @@ function HomePage() {
           </div>
           <div className="review-item">
             <div className="review-header">
-              <img src={avatar1} alt="Avatar utilisateur" />
+              <img src={avatar2} alt="Avatar utilisateur" />
               <h4>Marc D.</h4>
             </div>
             <p className="review-text">
@@ -108,7 +140,7 @@ function HomePage() {
           </div>
           <div className="review-item">
             <div className="review-header">
-              <img src={avatar1} alt="Avatar utilisateur" />
+              <img src={avatar3} alt="Avatar utilisateur" />
               <h4>Laura P.</h4>
             </div>
             <p className="review-text">
