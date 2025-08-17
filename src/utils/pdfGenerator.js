@@ -1,160 +1,132 @@
-import { PDFDocument, rgb } from 'pdf-lib';
+import { jsPDF } from 'jspdf';
+import 'jspdf-autotable';
+import html2canvas from 'html2canvas';
 
-// Fonction principale exportée
-export const generateAndDownloadPDF = async (formData, templateId) => {
-  console.log('[PDF Generator] Début de génération avec template:', templateId);
+// Fonction pour charger une image (utilisée pour les logos)
+const loadImage = async (url) => {
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.crossOrigin = 'Anonymous';
+    img.src = url;
+    img.onload = () => resolve(img);
+  });
+};
+
+const generateBusinessCardPdf = async (cardData, previewElementId = null) => {
+  // Option 1: Génération à partir du HTML (plus fidèle à la preview)
+  if (previewElementId) {
+    try {
+      const element = document.getElementById(previewElementId);
+      const canvas = await html2canvas(element, {
+        scale: 3, // Qualité plus élevée
+        logging: false,
+        useCORS: true,
+      });
+      
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF({
+        orientation: 'landscape',
+        unit: 'mm',
+        format: [85, 54] // Format carte de visite standard (85x54mm)
+      });
+
+      pdf.addImage(imgData, 'PNG', 0, 0, 85, 54);
+      return pdf;
+    } catch (error) {
+      console.error("Erreur avec html2canvas:", error);
+      // Fallback à la génération manuelle si échec
+    }
+  }
+
+  // Option 2: Génération manuelle (fallback)
+  const doc = new jsPDF({
+    orientation: 'landscape',
+    unit: 'mm',
+    format: [85, 54]
+  });
+
+  // Style configuration
+  const primaryColor = '#000000';
+  const secondaryColor = '#666666';
+  const fontSizeLarge = 16;
+  const fontSizeMedium = 12;
+  const fontSizeSmall = 10;
+
+  // Recto de la carte
+  doc.setFont('helvetica', 'bold');
+  doc.setTextColor(primaryColor);
   
-  try {
-    // Validation des entrées
-    if (!formData || !templateId) {
-      throw new Error('Données manquantes: formData ou templateId non fournis');
-    }
+  // Nom
+  doc.setFontSize(fontSizeLarge);
+  doc.text(cardData.name, 42.5, 15, { align: 'center' });
 
-    const pdfDoc = await PDFDocument.create();
-    const width = 85 * 2.83465; // 85mm en points
-    const height = 55 * 2.83465; // 55mm en points
-
-    // Page recto
-    const frontPage = pdfDoc.addPage([width, height]);
-    await drawCardFront(pdfDoc, frontPage, formData, templateId);
-
-    // Page verso
-    const backPage = pdfDoc.addPage([width, height]);
-    await drawCardBack(pdfDoc, backPage, formData, templateId);
-
-    // Génération finale
-    const pdfBytes = await pdfDoc.save();
-    downloadPDF(pdfBytes, `business-card-${Date.now()}.pdf`);
-    
-    console.log('[PDF Generator] PDF généré avec succès');
-    return true;
-
-  } catch (error) {
-    console.error('[PDF Generator] Échec critique:', {
-      error: error.message,
-      stack: error.stack,
-      data: { templateId, formData: Object.keys(formData) }
-    });
-    return false;
-  }
-};
-
-// Téléchargement du PDF
-const downloadPDF = (pdfBytes, fileName) => {
-  try {
-    const blob = new Blob([pdfBytes], { type: 'application/pdf' });
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(blob);
-    link.download = fileName;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(link.href);
-  } catch (error) {
-    console.error('[PDF Generator] Échec du téléchargement:', error);
-  }
-};
-
-// Fonction pour dessiner une image
-async function drawImage(pdfDoc, page, imageData, x, y, width, height) {
-  try {
-    if (!imageData) {
-      console.warn('Aucune donnée image fournie');
-      return false;
-    }
-
-    let imageBytes;
-    if (typeof imageData === 'string') {
-      if (imageData.startsWith('data:')) {
-        const res = await fetch(imageData);
-        imageBytes = await res.arrayBuffer();
-      } else {
-        throw new Error('Format image non supporté');
-      }
-    } else if (imageData instanceof ArrayBuffer) {
-      imageBytes = imageData;
-    } else {
-      throw new Error('Type de donnée image non reconnu');
-    }
-
-    const image = imageData.startsWith('data:image/png') 
-      ? await pdfDoc.embedPng(imageBytes)
-      : await pdfDoc.embedJpg(imageBytes);
-
-    page.drawImage(image, { x, y, width, height });
-    return true;
-  } catch (error) {
-    console.error('[PDF Generator] Erreur image:', error);
-    return false;
-  }
-}
-
-// Template Minimaliste (exemple)
-async function drawTemplate1Front(pdfDoc, page, data) {
-  const { width, height } = page.getSize();
-  const {
-    name = 'Nom complet',
-    jobTitle = 'Poste',
-    phone = '',
-    email = '',
-    logo = null
-  } = data;
-
-  // Arrière-plan
-  page.drawRectangle({
-    x: 0, y: 0, width, height,
-    color: rgb(1, 1, 1), // Blanc
-    borderColor: rgb(0.9, 0.9, 0.9),
-    borderWidth: 1
-  });
-
-  // Logo (si disponible)
-  if (logo) {
-    await drawImage(pdfDoc, page, logo, width - 70, height - 70, 50, 50);
-  }
-
-  // Texte
-  page.drawText(name, {
-    x: 30, y: height - 50,
-    size: 16,
-    color: rgb(0, 0, 0)
-  });
-
-  page.drawText(jobTitle, {
-    x: 30, y: height - 80,
-    size: 12,
-    color: rgb(0.3, 0.3, 0.3)
-  });
+  // Titre
+  doc.setFontSize(fontSizeMedium);
+  doc.setFont('helvetica', 'normal');
+  doc.text(cardData.title, 42.5, 22, { align: 'center' });
 
   // Coordonnées
-  const contacts = [
-    `T: ${phone}`,
-    `E: ${email}`
-  ].filter(Boolean).join(' | ');
+  doc.setFontSize(fontSizeSmall);
+  doc.setTextColor(secondaryColor);
+  doc.text(`T: ${cardData.phone}`, 42.5, 30, { align: 'center' });
+  doc.text(`E: ${cardData.email}`, 42.5, 35, { align: 'center' });
+  
+  // Adresse (si disponible)
+  if (cardData.address) {
+    doc.text(cardData.address, 42.5, 40, { align: 'center' });
+  }
 
-  page.drawText(contacts, {
-    x: 30, y: 40,
-    size: 10,
-    color: rgb(0.4, 0.4, 0.4)
-  });
-}
-
-// Ajoutez ici les autres templates...
-
-// Fonctions principales
-async function drawCardFront(pdfDoc, page, data, templateId) {
-  try {
-    switch(templateId) {
-      case 1: return await drawTemplate1Front(pdfDoc, page, data);
-      // Ajoutez d'autres cas...
-      default: throw new Error(`Template ${templateId} non implémenté`);
+  // Logo (si disponible)
+  if (cardData.logo) {
+    try {
+      const imgData = await loadImage(cardData.logo);
+      const imgWidth = 25;
+      const imgHeight = 10;
+      doc.addImage(imgData, 'JPEG', 
+        (85 - imgWidth) / 2, // Centré horizontalement
+        45, // Position verticale
+        imgWidth, 
+        imgHeight
+      );
+    } catch (error) {
+      console.error("Erreur de chargement du logo:", error);
     }
+  }
+
+  // Verso de la carte (si besoin)
+  if (cardData.hasBackSide) {
+    doc.addPage([85, 54], 'landscape');
+    
+    // Logo au verso
+    if (cardData.logo) {
+      try {
+        const imgData = await loadImage(cardData.logo);
+        doc.addImage(imgData, 'JPEG', 30, 20, 25, 10);
+      } catch (error) {
+        console.error("Erreur de chargement du logo verso:", error);
+      }
+    }
+    
+    // Texte supplémentaire (ex: "CRUNCH Bio plus")
+    if (cardData.backText) {
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(fontSizeMedium);
+      doc.setTextColor(primaryColor);
+      doc.text(cardData.backText, 42.5, 40, { align: 'center' });
+    }
+  }
+
+  return doc;
+};
+
+// Fonction principale d'export
+
+export const generateAndDownloadPDF = async (cardData, previewElementId = null) => {
+  try {
+    const pdfDoc = await generateBusinessCardPdf(cardData, previewElementId);
+    return pdfDoc.output('blob');
   } catch (error) {
-    console.error(`[Template ${templateId} Recto] Erreur:`, error);
+    console.error("Erreur lors de la génération du PDF:", error);
     throw error;
   }
-}
-
-async function drawCardBack(pdfDoc, page, data, templateId) {
-  // Implémentez similairement au recto
-}
+};
