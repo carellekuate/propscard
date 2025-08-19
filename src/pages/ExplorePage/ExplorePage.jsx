@@ -19,11 +19,11 @@ import Footer from '../../components/footer/Footer';
 import { Link, useNavigate } from 'react-router-dom';
 
 import BusinessCardRecto1 from '../../components/CardTemplates/BusinessCardRecto1';
-import BusinessCardVecto1  from '../../components/CardTemplates/BusinessCardVerso1';
+import BusinessCardVerso1  from '../../components/CardTemplates/BusinessCardVerso1';
 import BusinessCardRecto2 from '../../components/CardTemplates/BusinessCardRecto2';
-import BusinessCardVecto2  from '../../components/CardTemplates/BusinessCardVerso2';
+import BusinessCardVerso2  from '../../components/CardTemplates/BusinessCardVerso2';
 import BusinessCardRecto3 from '../../components/CardTemplates/BusinessCardRecto3';
-import BusinessCardVecto3  from '../../components/CardTemplates/BusinessCardVerso3';
+import BusinessCardVerso3  from '../../components/CardTemplates/BusinessCardVerso3';
 
 import Template1Front from '../../components/CardTemplates/Template1Front';
 import Template2Front from '../../components/CardTemplates/Template2Front';
@@ -40,27 +40,27 @@ export default function ExplorePage() {
       title: "Design minimaliste noir",
       price: "500 fcfa",
       component: BusinessCardRecto1,
-      backComponent: BusinessCardVecto1// Ajout du verso
+      backComponent: BusinessCardVerso1// Ajout du verso
     },
     { 
       id: 2, 
       title: "Design créatif pour artiste",
       price: "750 fcfa",
       component: BusinessCardRecto2,
-      backComponent: BusinessCardVecto2
+      backComponent: BusinessCardVerso2
     },
      { 
       id: 3, 
       title: "Design minimaliste noir",
       price: "500 fcfa",
       component: BusinessCardRecto3,
-      backComponent: BusinessCardVecto3// Ajout du verso
+      backComponent: BusinessCardVerso3// Ajout du verso
     },
     { 
       id: 4, 
       title: "Design créatif pour artiste",
       price: "750 fcfa",
-      component: BusinessCardVecto1,
+      component: BusinessCardVerso1,
       backComponent: BusinessCardRecto1
     },
   

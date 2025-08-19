@@ -16,13 +16,11 @@ export default function PaymentConfirmation() {
           <>
             <p>Votre carte de visite a été générée avec succès.</p>
             <p>Montant: <strong>{amount?.toLocaleString()} fcfa</strong> via {method}</p>
-            <p>Un exemplaire a été envoyé à votre email.</p>
           </>
         ) : (
           <>
             <p>Votre commande de cartes a été confirmée.</p>
             <p>Montant: <strong>{amount?.toLocaleString()} fcfa</strong> via {method}</p>
-            <p>Vous recevrez un email de confirmation sous peu.</p>
           </>
         )}
         
@@ -33,7 +31,10 @@ export default function PaymentConfirmation() {
           <Link 
             to="/preview" 
             className="exploreButton"
-            state={{ formData, templateId }}
+            state={{ 
+              formData: JSON.parse(JSON.stringify(formData || {})), 
+              templateId 
+            }}
           >
             Voir à nouveau ma carte
           </Link>

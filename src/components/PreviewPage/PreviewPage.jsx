@@ -15,27 +15,24 @@ import Template2Back from '../../components/CardTemplates/Template2Back';
 const allTemplates = [
   { 
     id: 1, 
+    price: "500 fcfa",
     component: BusinessCardRecto1,
-    backComponent: BusinessCardVerso1,
-    price: "500 fcfa"
+    backComponent: BusinessCardVerso1
   },
   { 
     id: 2, 
-    title: "Design créatif pour artiste",
     price: "750 fcfa",
     component: BusinessCardRecto2,
     backComponent: BusinessCardVerso2
   },
   { 
     id: 3, 
-    title: "Design minimaliste bleu",
     price: "500 fcfa",
     component: BusinessCardRecto3,
     backComponent: BusinessCardVerso3
   },
   { 
     id: 4, 
-    title: "Design élégant or",
     price: "750 fcfa",
     component: Template2Front,
     backComponent: Template2Back
@@ -52,14 +49,14 @@ export default function PreviewPage() {
   const TemplateBack = template?.backComponent;
 
   if (!template || !formData) {
-    return <div>Données manquantes</div>;
+    return <div className="error-message">Données manquantes</div>;
   }
 
   const handleDownload = () => {
     navigate('/payment-method', {
       state: {
         totalPrice: parseInt(template.price.replace(/\D/g, '')),
-        formData,
+        formData: JSON.parse(JSON.stringify(formData)),
         templateId,
         action: 'download'
       }
@@ -69,8 +66,8 @@ export default function PreviewPage() {
   const handleOrder = () => {
     navigate('/print-options', {
       state: {
-        cardData: formData,
-        template,
+        cardData: JSON.parse(JSON.stringify(formData)),
+        templateId,
         action: 'order'
       }
     });
