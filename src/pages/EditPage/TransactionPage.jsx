@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
-import { generateAndDownloadPDF } from '../../utils/pdfGenerator';
 import './TransactionPage.css';
 
 export default function TransactionPage() {
@@ -48,7 +47,9 @@ export default function TransactionPage() {
     
     try {
       if (action === 'download') {
-        await generateAndDownloadPDF(formData, templateId, 'card-preview-element');
+        // Import dynamique pour éviter les erreurs de circular import
+        const { generatePDFFromSavedHTML } = await import('../../utils/pdfGenerator');
+        await generatePDFFromSavedHTML();
       }
       
       await new Promise(resolve => setTimeout(resolve, 2000));
@@ -129,7 +130,7 @@ export default function TransactionPage() {
           <div className="checkmark">✓</div>
           <h2>Paiement réussi !</h2>
           <p>Votre transaction de {amount?.toLocaleString()} fcfa a été effectuée.</p>
-          {action === 'download' && <p>Votre téléchargement devrait commencer...</p>}
+          {action === 'download' && <p>Votre téléchargement a été traité.</p>}
           <p>Redirection en cours...</p>
         </div>
       )}

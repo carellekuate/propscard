@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import './PreviewPageStyles.css';
 import BusinessCardRecto1 from '../../components/CardTemplates/BusinessCardRecto1';
@@ -44,6 +44,9 @@ export default function PreviewPage() {
   const navigate = useNavigate();
   const { formData, templateId } = location.state || {};
   
+  const frontRef = useRef(null);
+  const backRef = useRef(null);
+
   const template = allTemplates.find(t => t.id === templateId);
   const TemplateFront = template?.component;
   const TemplateBack = template?.backComponent;
@@ -52,15 +55,33 @@ export default function PreviewPage() {
     return <div className="error-message">Données manquantes</div>;
   }
 
-  const handleDownload = () => {
-    navigate('/payment-method', {
-      state: {
-        totalPrice: parseInt(template.price.replace(/\D/g, '')),
-        formData: JSON.parse(JSON.stringify(formData)),
-        templateId,
-        action: 'download'
-      }
-    });
+  const handleDownload = async () => {
+    try {
+      // Sauvegarde le HTML exact des éléments
+      const captureData = {
+        frontHTML: frontRef.current?.outerHTML,
+        backHTML: backRef.current?.outerHTML,
+        fileName: `carte-${formData.name || 'visite'}.pdf`,
+        formData: formData,
+        templateId: templateId
+      };
+      
+      localStorage.setItem('pdfCaptureData', JSON.stringify(captureData));
+      
+      // Redirige vers le paiement
+      navigate('/payment-method', {
+        state: {
+          totalPrice: parseInt(template.price.replace(/\D/g, '')),
+          formData: JSON.parse(JSON.stringify(formData)),
+          templateId,
+          action: 'download'
+        }
+      });
+      
+    } catch (error) {
+      console.error('Erreur préparation téléchargement:', error);
+      alert('Erreur lors de la préparation du téléchargement');
+    }
   };
 
   const handleOrder = () => {
@@ -78,20 +99,24 @@ export default function PreviewPage() {
       <div className="card-display">
         <div className="card-side">
           <h3>Recto de votre carte</h3>
-          <TemplateFront data={formData} />
+          <div ref={frontRef} className="card-preview-wrapper">
+            <TemplateFront data={formData} />
+          </div>
         </div>
         <div className="card-side">
           <h3>Verso de votre carte</h3>
-          <TemplateBack data={formData} />
+          <div ref={backRef} className="card-preview-wrapper">
+            <TemplateBack data={formData} />
+          </div>
         </div>
       </div>
       
       <div className="action-buttons">
         <button className="custom-button download-btn" onClick={handleDownload}>
-          Télécharger
+          Télécharger PDF
         </button>
         <button className="custom-button order-btn" onClick={handleOrder}>
-          Passer votre commande
+          Commander l'impression
         </button>
       </div>
     </div>
