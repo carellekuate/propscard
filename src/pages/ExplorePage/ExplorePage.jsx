@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './ExplorePageStyles.css';
-import { FaBeer } from 'react-icons/fa';  // Importe une icône de FontAwesome
+import { FaBeer } from 'react-icons/fa';
 import img1 from '../../assets/images/fa2.PNG';
 import img2 from '../../assets/images/fb1.PNG';
 import img3 from '../../assets/images/fo.PNG';
@@ -16,7 +16,7 @@ import img12 from '../../assets/images/fk.PNG';
 import { navLinks } from '../../constants/NavLinks';
 import Navbar from '../../components/navbar/Navbar';
 import Footer from '../../components/footer/Footer';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import BusinessCardRecto1 from '../../components/CardTemplates/BusinessCardRecto1';
 import BusinessCardVerso1  from '../../components/CardTemplates/BusinessCardVerso1';
@@ -29,18 +29,20 @@ import Template1Front from '../../components/CardTemplates/Template1Front';
 import Template2Front from '../../components/CardTemplates/Template2Front';
 import Template1Back from '../../components/CardTemplates/Template1Back';
 import Template2Back from '../../components/CardTemplates/Template2Back';
+import PreviewModal from '../../components/PreviewModal/PreviewModal';
 
 export default function ExplorePage() {
   const navigate = useNavigate();
-
+  const [selectedDesign, setSelectedDesign] = useState(null);
+  const [showPreview, setShowPreview] = useState(false);
 
   const cardDesigns = [
-     { 
+    { 
       id: 1, 
       title: "Design minimaliste noir",
       price: "500 fcfa",
       component: BusinessCardRecto1,
-      backComponent: BusinessCardVerso1// Ajout du verso
+      backComponent: BusinessCardVerso1
     },
     { 
       id: 2, 
@@ -49,31 +51,40 @@ export default function ExplorePage() {
       component: BusinessCardRecto2,
       backComponent: BusinessCardVerso2
     },
-     { 
+    { 
       id: 3, 
-      title: "Design minimaliste noir",
+      title: "Design minimaliste bleu",
       price: "500 fcfa",
       component: BusinessCardRecto3,
-      backComponent: BusinessCardVerso3// Ajout du verso
+      backComponent: BusinessCardVerso3
     },
     { 
       id: 4, 
-      title: "Design créatif pour artiste",
+      title: "Design élégant or",
       price: "750 fcfa",
-      component: BusinessCardVerso1,
-      backComponent: BusinessCardRecto1
+      component: Template2Front,
+      backComponent: Template2Back
     },
-  
-
   ];
 
   const handleClick = (design) => {
-  navigate("/edit", { 
-    state: { 
-      templateId: design.id // ✅ Seulement l'ID (sérialisable)
-    } 
-  });
-};
+    navigate("/edit", { 
+      state: { 
+        templateId: design.id
+      } 
+    });
+  };
+
+  const handlePreview = (design, e) => {
+    e.stopPropagation();
+    setSelectedDesign(design);
+    setShowPreview(true);
+  };
+
+  const closePreview = () => {
+    setShowPreview(false);
+    setSelectedDesign(null);
+  };
 
   return (
     <div className="all">
@@ -83,22 +94,40 @@ export default function ExplorePage() {
         <p className="subtitle">Choisissez un design qui représente votre entreprise</p>
 
         <div className="card-list">
-            {cardDesigns.map((design) => (
-              <div className="card-item" key={design.id} style={{ alignSelf: 'start' }}>
-                <div className="card-preview" onClick={() => handleClick(design)}>
-                  <design.component />
-                </div>
-                <div className="card-details">
-                  <h3>{design.title}</h3>
-                  <p className="price">{design.price}</p>
-                  <button className="custom-button" onClick={() => handleClick(design)}>
-                    Personnaliser
-                  </button>
-                </div>
+          {cardDesigns.map((design) => (
+            <div className="card-item" key={design.id} style={{ alignSelf: 'start' }}>
+              <div className="card-preview" onClick={() => handleClick(design)}>
+                <design.component />
+                <button 
+                  className="preview-btn"
+                  onClick={(e) => handlePreview(design, e)}
+                >
+                  Aperçu
+                </button>
               </div>
-            ))}
+              <div className="card-details">
+                <h3>{design.title}</h3>
+                <p className="price">{design.price}</p>
+                <button className="custom-button" onClick={() => handleClick(design)}>
+                  Personnaliser
+                </button>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
+      
+      {showPreview && selectedDesign && (
+        <PreviewModal 
+          design={selectedDesign} 
+          onClose={closePreview}
+          onCustomize={() => {
+            closePreview();
+            handleClick(selectedDesign);
+          }}
+        />
+      )}
+      
       <Footer />
     </div>  
   );

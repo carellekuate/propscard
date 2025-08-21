@@ -2,169 +2,146 @@
 
 /* Supprimez la déclaration .navbar dupliquée */
 .products-page {
-  
   margin: 0 auto;
-  padding: 80px 20px 50px; /* Réduisez le padding-top à 80px */
+  padding: 80px 20px 50px;
   text-align: center;
   align-items: center;
-  
-
 }
 
 .products-page h2 {
   font-size: 2.5rem;
   color: #2c3e50;
   margin-bottom: 10px;
-  position: relative; /* Supprimez top: 500px */
-  
+  position: relative;
 }
 
-footer{
+footer {
   position: relative;
   object-fit: cover;
 }
-  .subtitle {
-    color: #7f8c8d;
-    margin-bottom: 40px;
-    font-size: 1.1rem;
-    
-  }
-  
 
-  
-  /* Carte de produit */
-  .product-card {
-   
-    border-radius:10px;
-    width: 80mm;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    
-  }
-  
-  
-  .product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-  }
-  
-  /* Conteneur d'image */
-  .card-image-container {
-    position: relative;
-    padding-top: 100%; /* Ratio carré 1:1 */
-    overflow: hidden;
-    
-  }
-  
-  .card-image-container img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 85mm;
-    height: 5mm;
-    object-fit: cover;
-    
-  }
-  
-  .preview-btn {
-    position: absolute;
-    bottom: 15px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 20px;
-    cursor: pointer;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  
-  .product-card:hover .preview-btn {
-    opacity: 1;
-  }
-  
-  /* Informations de la carte */
-  .card-info {
-    padding: 1px;
-    text-align: center;
-  }
-  
-  .card-info h3 {
-    margin: 0 0 10px;
-    color: #2c3e50;
-    font-size: 1.1rem;
-  }
-  
-  .price {
-    font-weight: bold;
-    color: #e74c3c;
-    font-size: 1.2rem;
-    margin: 0 0 15px;
-  }
-  
-  .card-list {
+.subtitle {
+  color: #7f8c8d;
+  margin-bottom: 40px;
+  font-size: 1.1rem;
+}
+
+/* Carte de produit */
+.product-card {
+  border-radius: 10px;
+  width: 80mm;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Conteneur d'image */
+.card-image-container {
+  position: relative;
+  padding-top: 100%;
+  overflow: hidden;
+}
+
+.card-image-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 85mm;
+  height: 5mm;
+  object-fit: cover;
+}
+
+.card-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 15px;
-  justify-items: center; /* Centre les cartes horizontalement */
-  padding: 0 20px; /* Ajoute un padding pour éviter les débordements */
+  justify-items: center;
+  padding: 0 20px;
   width: 100%;
   max-width: 1500px;
-  margin: 0 auto; /* Centre le conteneur */
-  
-  }
+  margin: 0 auto;
+  height: 360px;
+}
 
-  .card-item {
+.card-item {
   display: flex;
   flex-direction: column;
   gap: 1px;
-  align-items: stretch; /* Ajoutez cette ligne */
+  align-items: stretch;
   overflow: hidden;
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  height: 100%;  /* Espacement réduit entre les éléments */
-  width: 325px; /* Prend toute la largeur disponible */
+  height: 100%;
+  width: 325px;
   max-width: 400px;
-  
-  }
+}
 
-  .card-preview {
-  flex: 1; /* Ajoutez cette ligne */
+.card-preview {
+  flex: 1;
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* Alignement en haut */
+  align-items: flex-start;
   overflow: hidden;
-  }
+  position: relative;
+  cursor: pointer;
+}
 
-  
-  .card-details {
-  padding: 5px 10px 10px; /* Top | Horizontal | Bottom */
+.preview-btn {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  font-size: 0.9rem;
+  z-index: 10;
+}
+
+.card-preview:hover .preview-btn {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-5px);
+}
+
+.preview-btn:hover {
+  background: rgba(0, 0, 0, 0.9);
+  transform: translateX(-50%) translateY(-7px);
+}
+
+.card-details {
+  padding: 5px 10px 10px;
   text-align: center;
- 
-  } 
-  
-  .custom-button {
-    background: #3498db;
-    color: white;
-    border: none;
-    margin-top: 8px; /* Espacement réduit au-dessus du bouton */
-    padding: 8px 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: background 0.3s ease;
-    width: 100%;
-  }
-  
-  .custom-button:hover {
-    background: #2980b9;
-  }
-  
-  .custom-button.loading {
+}
+
+.custom-button {
+  background: #3498db;
+  color: white;
+  border: none;
+  margin-top: 8px;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s ease;
+  width: 100%;
+}
+
+.custom-button:hover {
+  background: #2980b9;
+}
+
+.custom-button.loading {
   opacity: 0.7;
   cursor: not-allowed;
 }
@@ -177,17 +154,16 @@ footer{
   border-radius: 50%;
   border-top-color: white;
   animation: spin 1s ease-in-out infinite;
-
 }
 
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
 
-  /* Responsive */
-  @media (max-width: 768px) {
-    .grid-container {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
+/* Responsive */
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
   }
+}

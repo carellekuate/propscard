@@ -1,31 +1,40 @@
 import React from 'react';
 import './PreviewModal.css';
-import { useNavigate } from 'react-router-dom'; // Ajouter cette importation
 
-const PreviewModal = ({ template, onClose }) => {
-  const navigate = useNavigate(); // Utiliser le hook de navigation
-
-  const handleCustomize = () => {
-    navigate('/edit', { state: { template } }); // Navigation vers la page d'édition
-    onClose(); // Fermer la modal
-  };
+const PreviewModal = ({ design, onClose, onCustomize }) => {
+  const FrontComponent = design.component;
+  const BackComponent = design.backComponent;
 
   return (
-    <div className="modal-overlay">
-      <div className="modal-content">
-        <button className="close-btn" onClick={onClose}>×</button>
-        <div className="modal-image-container">
-          <img src={template.img} alt={template.title} />
-        </div>
-        <div className="modal-info">
-          <h2>{template.title}</h2>
-          <p className="modal-price">{template.price}</p>
-          <div className="modal-actions">
-            <button className="modal-customize-btn" onClick={handleCustomize}>
-              Personnaliser ce modèle
-            </button>
-            <button className="modal-close-btn" onClick={onClose}>Fermer</button>
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+        <button className="modal-close" onClick={onClose}>×</button>
+        
+        <h3>Aperçu complet - {design.title}</h3>
+        
+        <div className="preview-container">
+          <div className="card-side">
+            <h4>Recto</h4>
+            <div className="card-preview-modal">
+              <FrontComponent />
+            </div>
           </div>
+          
+          <div className="card-side">
+            <h4>Verso</h4>
+            <div className="card-preview-modal">
+              <BackComponent />
+            </div>
+          </div>
+        </div>
+        
+        <div className="preview-actions">
+          <button className="customize-btn" onClick={onCustomize}>
+            Personnaliser ce modèle
+          </button>
+          <button className="close-btn" onClick={onClose}>
+            Fermer
+          </button>
         </div>
       </div>
     </div>
