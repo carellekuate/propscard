@@ -18,7 +18,6 @@ export default function TransactionPage() {
   const methodNames = {
     'orange-money': 'Orange Money',
     'mtn-money': 'MTN Money',
-    'carte-bancaire': 'Carte Bancaire'
   };
 
   const displayName = methodNames[method] || method;

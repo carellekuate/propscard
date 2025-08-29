@@ -4,46 +4,47 @@ const BusinessCardVerso3 = ({ data = {} }) => {
   const logoSource = data.logo || process.env.PUBLIC_URL + '/logo.png';
   
   const {
-    slogan = "YOUR SLOGAN HERE!!!",
     email = "company@mail.com",
+    slogan = "",
     companyName = "Dental Logo",
     tagline = "TAGLINE"
   } = data;
 
   return (
     <div style={{
-  width: '100%',
-  margin: 0,
-  padding: 0,
-  display: 'flex',
-  borderRadius: '20px 20px 20px 20px ',
-  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.15)',
-  flexDirection: 'column',
-  alignItems: 'flex-start',
-  justifyContent: 'flex-start',
-  overflow: 'hidden'
-}}>
+      width: '85mm',
+      height: '55mm',
+      margin: 0,
+      padding: 0,
+      display: 'flex',
+      borderRadius: '20px',
+      boxShadow: '0 10px 30px rgba(0, 0, 0, 0.15)',
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+      justifyContent: 'flex-start',
+      overflow: 'hidden'
+    }}>
       <div style={{
-        width: '85mm',
-        height: '55mm',
+        width: '100%',
+        height: '100%',
         backgroundColor: '#fcf1f1',
         borderRadius: '20px',
         boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'center',
         position: 'relative',
-        padding: '20px'
+        padding: '20px',
+        boxSizing: 'border-box'
       }}>
         <img 
           src={logoSource} 
           alt="Company Logo" 
           style={{
-            width: '100px',
-            height: '100px',
+            width: '120px',
+            height: '120px',
             objectFit: 'contain',
-            marginBottom: '15px'
+            marginTop: '1px'
           }}
           onError={(e) => {
             e.target.style.display = 'none';

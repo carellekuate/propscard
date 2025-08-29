@@ -16,11 +16,12 @@ const BusinessCardRecto3 = ({ data = {} }) => {
 
   return (
     <div style={{
-      width: '100%',
+      width: '85mm',
+      height: '55mm',
       margin: 0,
       padding: 0,
       display: 'flex',
-      borderRadius: '20px 20px 20px 20px ',
+      borderRadius: '20px',
       boxShadow: '0 10px 30px rgba(0, 0, 0, 0.15)',
       flexDirection: 'column',
       alignItems: 'flex-start',
@@ -28,10 +29,10 @@ const BusinessCardRecto3 = ({ data = {} }) => {
       overflow: 'hidden'
     }}>
       <div style={{
-        width: '85mm',
-        height: '55mm',
+        width: '100%',
+        height: '100%',
         backgroundColor: '#fcf1f1',
-        borderRadius: '20px 20px 20px 20px ',
+        borderRadius: '20px',
         boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
         display: 'flex',
         position: 'relative',
@@ -81,8 +82,8 @@ const BusinessCardRecto3 = ({ data = {} }) => {
             src={logoSource} 
             alt="Company Logo" 
             style={{
-              width: '80px',
-              height: '80px',
+              width: '95px',
+              height: '95px',
               objectFit: 'contain',
               marginBottom: '10px'
             }}

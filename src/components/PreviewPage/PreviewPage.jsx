@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import './PreviewPageStyles.css';
 import BusinessCardRecto1 from '../../components/CardTemplates/BusinessCardRecto1';
@@ -39,10 +39,22 @@ const allTemplates = [
   },
 ];
 
+// Composant de filigrane pour les cartes
+const WatermarkOverlay = ({ data }) => {
+  return (
+    <div className="card-watermark">
+      <div className="watermark-line">NON PAYÉ - {data.name || 'UTILISATEUR'}</div>
+      <div className="watermark-line">{new Date().toLocaleDateString()}</div>
+      <div className="watermark-line">{document.location.hostname}</div>
+    </div>
+  );
+};
+
 export default function PreviewPage() {
   const location = useLocation();
   const navigate = useNavigate();
   const { formData, templateId } = location.state || {};
+  const [showAlert, setShowAlert] = useState(false);
   
   const frontRef = useRef(null);
   const backRef = useRef(null);
@@ -51,16 +63,79 @@ export default function PreviewPage() {
   const TemplateFront = template?.component;
   const TemplateBack = template?.backComponent;
 
+  useEffect(() => {
+    let alertTimeout;
+    
+    // Fonction pour afficher le message d'alerte
+    const showAlertMessage = () => {
+      setShowAlert(true);
+      
+      // Cacher l'alerte après 3 secondes
+      alertTimeout = setTimeout(() => {
+        setShowAlert(false);
+      }, 3000);
+    };
+
+    // Empêcher le menu contextuel (clic droit)
+    const preventContextMenu = (e) => {
+      // Ne bloquer que si on clique sur une carte
+      if (e.target.closest('.card-preview-modal')) {
+        e.preventDefault();
+        showAlertMessage();
+        return false;
+      }
+    };
+
+    // Détecter les tentatives de capture d'écran
+    const preventScreenCapture = (e) => {
+      // Détecter la touche Impr écran et les raccourcis d'impression
+      if (e.key === "PrintScreen" || (e.ctrlKey && e.key === "p") || (e.metaKey && e.key === "p")) {
+        // Ne bloquer que si on est sur la page de prévisualisation
+        e.preventDefault();
+        showAlertMessage();
+        return false;
+      }
+    };
+
+    // Ajouter les écouteurs d'événements
+    document.addEventListener('contextmenu', preventContextMenu);
+    document.addEventListener('keydown', preventScreenCapture);
+
+    // Nettoyer les écouteurs lors du démontage du composant
+    return () => {
+      document.removeEventListener('contextmenu', preventContextMenu);
+      document.removeEventListener('keydown', preventScreenCapture);
+      
+      clearTimeout(alertTimeout);
+    };
+  }, []);
+
   if (!template || !formData) {
     return <div className="error-message">Données manquantes</div>;
   }
 
   const handleDownload = async () => {
     try {
-      // Sauvegarde le HTML exact des éléments
+      // Créer des éléments div pour capturer le contenu
+      const frontElement = document.createElement('div');
+      const backElement = document.createElement('div');
+      
+      // Rendre les composants dans ces éléments
+      const frontComponent = <TemplateFront data={formData} />;
+      const backComponent = <TemplateBack data={formData} />;
+      
+      // Utiliser ReactDOM pour rendre les composants dans les éléments
+      const { render } = await import('react-dom');
+      await render(frontComponent, frontElement);
+      await render(backComponent, backElement);
+      
+      // Attendre que le rendu soit complet
+      await new Promise(resolve => setTimeout(resolve, 100));
+      
+      // Sauvegarder le HTML
       const captureData = {
-        frontHTML: frontRef.current?.outerHTML,
-        backHTML: backRef.current?.outerHTML,
+        frontHTML: frontElement.innerHTML,
+        backHTML: backElement.innerHTML,
         fileName: `carte-${formData.name || 'visite'}.pdf`,
         formData: formData,
         templateId: templateId
@@ -68,7 +143,7 @@ export default function PreviewPage() {
       
       localStorage.setItem('pdfCaptureData', JSON.stringify(captureData));
       
-      // Redirige vers le paiement
+      // Rediriger vers le paiement
       navigate('/payment-method', {
         state: {
           totalPrice: parseInt(template.price.replace(/\D/g, '')),
@@ -95,29 +170,49 @@ export default function PreviewPage() {
   };
 
   return (
-    <div className="preview-container">
-      <div className="card-display">
-        <div className="card-side">
-          <h3>Recto de votre carte</h3>
-          <div ref={frontRef} className="card-preview-wrapper">
-            <TemplateFront data={formData} />
+    <div className="preview-page-container">
+      {showAlert && (
+        <div className="screenshot-alert">
+          <div className="screenshot-alert-content">
+            <h3>⚠️ Protection du contenu</h3>
+            <p>La capture d'écran est désactivée sur cette page</p>
           </div>
         </div>
-        <div className="card-side">
-          <h3>Verso de votre carte</h3>
-          <div ref={backRef} className="card-preview-wrapper">
-            <TemplateBack data={formData} />
-          </div>
-        </div>
-      </div>
+      )}
       
-      <div className="action-buttons">
-        <button className="custom-button download-btn" onClick={handleDownload}>
-          Télécharger PDF
-        </button>
-        <button className="custom-button order-btn" onClick={handleOrder}>
-          Commander l'impression
-        </button>
+      <div className="preview-modal-content">
+        <h1>Présentation Finale de votre Carte</h1>        
+        <div className="preview-container">
+          <div className="card-side">
+            <div className="card-preview-modal">
+              <TemplateFront data={formData} />
+              <WatermarkOverlay data={formData} />
+            </div>
+            <div className="card-preview-modal">
+              <TemplateBack data={formData} />
+              <WatermarkOverlay data={formData} />
+            </div>
+          </div>
+          
+          <div className="preview-description">
+            <p>⚠️ Après paiement, vous pourrez télécharger vos cartes sans filigrane.</p>
+          </div>
+          
+          <div className="preview-actions">
+            <button
+              onClick={handleDownload}
+              className="download-pdf-btn"
+            >
+              Télécharger PDF
+            </button>
+            <button
+              onClick={handleOrder}
+              className="order-print-btn"
+            >
+              Commander l'impression
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );

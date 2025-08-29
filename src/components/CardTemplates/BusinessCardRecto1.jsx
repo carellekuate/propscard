@@ -16,25 +16,22 @@ const BusinessCardRecto1 = ({ data = {} }) => {
 
   return (
     <div style={{
-      width: '100%',
-      margin: "0 auto",
+      margin: "0",
       padding: 0,
       display: 'flex',
       flexDirection: 'column',
-      alignItems: 'flex-start',
-      justifyContent: 'flex-start',
-      boxShadow: '0 10px 30px rgba(0, 0, 0, 0.15)',
-      overflow: 'hidden'
+      alignItems: 'center',
+      justifyContent: 'center',
+      boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)',
+      overflow: 'hidden',
     }}>
       <div style={{
         width: '350px',
         height: '200px',
         background: 'white',
-        borderRadius: '8px',
-        boxShadow: '0 8px 16px rgba(0,0,0,0.2)',
         position: 'relative',
         overflow: 'hidden',
-        display: 'flex'
+        display: 'flex',
       }}>
 
         
@@ -141,7 +138,7 @@ const BusinessCardRecto1 = ({ data = {} }) => {
         </div>
         
         <div style={{
-          width: '40%',
+          width: '70%',
           background: '#2c2c2c',
           position: 'relative',
           display: 'flex',
@@ -151,7 +148,7 @@ const BusinessCardRecto1 = ({ data = {} }) => {
         }}>
           <div style={{
             position: 'absolute',
-            left: '-30px',
+            left: '-25px',
             top: 0,
             bottom: 0,
             width: '65px',

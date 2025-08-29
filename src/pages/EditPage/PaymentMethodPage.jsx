@@ -3,7 +3,6 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import './PaymentMethodPage.css';
 import orangeMoneyIcon from "../../assets/images/orange-money-icon.png";
 import mtnMoneyIcon from "../../assets/images/mtn-money-icon.jpg";
-import creditCardIcon from "../../assets/images/credit-card-icon.png";
 
 export default function PaymentMethodPage() {
   const location = useLocation();
@@ -14,7 +13,6 @@ export default function PaymentMethodPage() {
   const paymentMethods = [
     { id: 1, name: "Orange Money", icon: orangeMoneyIcon },
     { id: 2, name: "MTN Money", icon: mtnMoneyIcon },
-    { id: 3, name: "Carte Bancaire", icon: creditCardIcon }
   ];
 
   const handleMethodSelection = (methodName) => {

@@ -45,6 +45,17 @@ const allTemplates = [
   },
 ];
 
+// Composant de filigrane pour les cartes (identique à PreviewPage)
+const WatermarkOverlay = ({ data }) => {
+  return (
+    <div className="card-watermark">
+      <div className="watermark-line">NON PAYÉ - {data.name || 'UTILISATEUR'}</div>
+      <div className="watermark-line">{new Date().toLocaleDateString()}</div>
+      <div className="watermark-line">{document.location.hostname}</div>
+    </div>
+  );
+};
+
 const PrintOptionsPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -84,11 +95,15 @@ const PrintOptionsPage = () => {
 
       <div className="cardPreview">
         <h3>Aperçu de votre carte</h3>
-        <div className="card-front">
-          <TemplateFrontPreview data={cardData} />
-        </div>
-        <div className="card-back">
-          <TemplateBackPreview data={cardData} />
+        <div className="card-side1">
+          <div className="card-preview-modal1">
+            <TemplateFrontPreview data={cardData} />
+            <WatermarkOverlay data={cardData} />
+          </div>
+          <div className="card-preview-modal1">
+            <TemplateBackPreview data={cardData} />
+            <WatermarkOverlay data={cardData} />
+          </div>
         </div>
       </div>
 

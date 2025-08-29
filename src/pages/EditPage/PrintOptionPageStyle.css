@@ -41,3 +41,39 @@
   margin-bottom: 2rem;
   border-radius: 4px;
 }
+
+/* Nouveaux styles pour aligner les cartes côte à côte */
+.card-side1 {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.card-preview-modal1 {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f9f9f9;
+  min-height: 220px;
+  position: relative;
+  overflow: hidden;
+  width: 335px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles responsives */
+@media (max-width: 768px) {
+  .card-side1 {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .card-preview-modal1 {
+    width: 100%;
+  }
+}

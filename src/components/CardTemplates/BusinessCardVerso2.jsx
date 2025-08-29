@@ -10,15 +10,14 @@ const BusinessCardVerso2 = ({ data = {} }) => {
 
   return (
     <div style={{
-  width: '100%',
-  margin: 0,
-  padding: 0,
-  display: 'flex',
-  flexDirection: 'column',
-  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.15)',
-  alignItems: 'flex-start',
-  justifyContent: 'flex-start',
-  overflow: 'hidden'
+      margin: "0",
+      padding: 0,
+      display: 'flex',
+      flexDirection: 'column',
+      boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)',
+      alignItems: 'center',
+      justifyContent: 'center',
+      overflow: 'hidden', 
 }}>
       <div style={{
         width: '350px',

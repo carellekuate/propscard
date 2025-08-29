@@ -4,7 +4,7 @@ const BusinessCardRecto2 = ({ data = {} }) => {
   const {
     name = "YOURNAME",
     jobTitle = "JOB TITLE",
-    address = "8888 First Street San Jose, CA 95000",
+    addressLine1 = "8888 First Street San Jose, CA 95000",
     email = "YourEmail@domain.com",
     phone = "+000 000 000000",
     companyName = "YOUR LOGO",
@@ -15,15 +15,14 @@ const BusinessCardRecto2 = ({ data = {} }) => {
 
   return (
     <div style={{
-      width: '100%',
-      margin: 0,
+      margin: "0",
       padding: 0,
       display: 'flex',
-      boxShadow: '0 10px 30px rgba(0, 0, 0, 0.15)',
       flexDirection: 'column',
-      alignItems: 'flex-start',
-      justifyContent: 'flex-start',
-      overflow: 'hidden'
+      alignItems: 'center',
+      justifyContent: 'center',
+      boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)',
+      overflow: 'hidden',
     }}>
       <div style={{
         width: '350px',
@@ -128,7 +127,7 @@ const BusinessCardRecto2 = ({ data = {} }) => {
               alignItems: 'center',
               justifyContent: 'flex-end'
             }}>
-              {address}
+              {addressLine1}
               <div style={{
                 width: '12px',
                 height: '12px',
@@ -170,7 +169,7 @@ const BusinessCardRecto2 = ({ data = {} }) => {
               alignItems: 'center',
               justifyContent: 'flex-end'
             }}>
-              mobile: {phone}
+             {phone}
               <div style={{
                 width: '12px',
                 height: '12px',

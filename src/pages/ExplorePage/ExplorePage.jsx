@@ -62,8 +62,8 @@ export default function ExplorePage() {
       id: 4, 
       title: "Design élégant or",
       price: "750 fcfa",
-      component: Template2Front,
-      backComponent: Template2Back
+      component: BusinessCardRecto1,
+      backComponent: BusinessCardVerso1
     },
   ];
 
