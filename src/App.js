@@ -11,21 +11,22 @@ import PrintOptionPage from './pages/EditPage/PrintOptionPage';
 import CheckoutPage from './pages/EditPage/CheckoutPage';
 import PaymentMethodPage from './pages/EditPage/PaymentMethodPage';
 import TransactionPage from './pages/EditPage/TransactionPage';
-// Correction du nom du composant - vérifiez le nom exact du fichier
-import PayementConfirmation from './pages/EditPage/PayementConfirmation'; 
+import PayementConfirmation from './pages/EditPage/PayementConfirmation';
 import AboutPage from './pages/AboutPage';
+import PricingPage from './pages/pricing/PricingPage';
 import ContactPage from './pages/ContactPage';
 import PreviewPage from './components/PreviewPage/PreviewPage';
 
+// Export des liens de navigation (à déplacer dans un fichier séparé)
+export const navLinks = [
+  { path: "/", nameFr: "Accueil", nameEn: "Home" },
+  { path: "/explore", nameFr: "Explorer", nameEn: "Explore" },
+  { path: "/pricing", nameFr: "Tarifs", nameEn: "Pricing" },
+  { path: "/about", nameFr: "À propos", nameEn: "About" },
+  { path: "/contact", nameFr: "Contact", nameEn: "Contact" }
+];
 
 function App() {
-  const [navLinks] = useState([
-    { path: "/", nameFr: "Accueil", nameEn: "Home" },
-    { path: "/explore", nameFr: "Explorer", nameEn: "Explore" },
-    { path: "/about", nameFr: "À propos", nameEn: "About" },
-    { path: "/contact", nameFr: "Contact", nameEn: "Contact" }
-  ]);
-
   const [languageUpdate, setLanguageUpdate] = useState(0);
   
   useEffect(() => {
@@ -43,7 +44,6 @@ function App() {
   return (
     <LanguageProvider>
       <Router>
-        
         <Routes>
           <Route path="/" element={<HomePage key={languageUpdate} />} />
           <Route path="/explore" element={<ExplorePage key={languageUpdate} />} />
@@ -54,6 +54,7 @@ function App() {
           <Route path="/transaction/:method" element={<TransactionPage key={languageUpdate} />} />
           <Route path="/payment-confirmation" element={<PayementConfirmation key={languageUpdate} />} />
           <Route path="/about" element={<AboutPage key={languageUpdate} />} />
+          <Route path="/pricing" element={<PricingPage key={languageUpdate} />} />
           <Route path="/contact" element={<ContactPage key={languageUpdate} />} />
           <Route path="/preview" element={<PreviewPage key={languageUpdate} />} />
         </Routes>

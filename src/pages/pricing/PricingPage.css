@@ -1,0 +1,145 @@
+.pricing-page {
+  padding: 2rem;
+  max-width: 1200px;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+
+.pricing-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.pricing-header h1 {
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.pricing-header p {
+  font-size: 1.2rem;
+  color: #7f8c8d;
+}
+
+.pricing-container {
+  display: flex;
+  justify-content: center;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  width: 100%;
+}
+
+.pricing-card {
+  background: white;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pricing-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.pricing-card.highlighted {
+  border: 2px solid #4a8eff;
+  transform: scale(1.03);
+}
+
+.pricing-card.highlighted:hover {
+  transform: scale(1.03) translateY(-5px);
+}
+
+.plan-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.plan-header h3 {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.price {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+}
+
+.amount {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #4a8eff;
+}
+
+.period {
+  font-size: 1rem;
+  color: #7f8c8d;
+  margin-left: 0.25rem;
+}
+
+.features {
+  list-style: none;
+  margin: 1.5rem 0;
+  flex-grow: 1;
+}
+
+.features li {
+  padding: 0.5rem 0;
+  color: #5a6b7c;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.features li:before {
+  content: "•";
+  color: #4a8eff;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
+.cta-button {
+  background: #4a8eff;
+  color: white;
+  border: none;
+  padding: 1rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-top: auto;
+}
+
+.cta-button:hover {
+  background: #3a7aed;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .pricing-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .pricing-page {
+    padding: 1rem;
+  }
+}
