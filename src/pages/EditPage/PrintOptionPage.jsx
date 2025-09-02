@@ -11,7 +11,15 @@ import Template1Front from '../../components/CardTemplates/Template1Front';
 import Template2Front from '../../components/CardTemplates/Template2Front';
 import Template1Back from '../../components/CardTemplates/Template1Back';
 import Template2Back from '../../components/CardTemplates/Template2Back';
+// Ajoutez ces imports
+import BusinessCardRecto4 from '../../components/CardTemplates/BusinessCardRecto4';
+import BusinessCardVerso4 from '../../components/CardTemplates/BusinessCardVerso4';
+import BusinessCardRecto5 from '../../components/CardTemplates/BusinessCardRecto5';
+import BusinessCardVerso5 from '../../components/CardTemplates/BusinessCardVerso5';
+import BusinessCardRecto6 from '../../components/CardTemplates/BusinessCardRecto6';
+import BusinessCardVerso6 from '../../components/CardTemplates/BusinessCardVerso6';
 
+// Modifiez le tableau allTemplates pour inclure les nouvelles cartes
 const allTemplates = [
   {
     id: 1,
@@ -42,6 +50,24 @@ const allTemplates = [
     price: "1000 fcfa",
     component: Template2Front,
     backComponent: Template2Back
+  },
+  {
+    id: 6,
+    price: "600 fcfa",
+    component: BusinessCardRecto4,
+    backComponent: BusinessCardVerso4
+  },
+  {
+    id: 7,
+    price: "650 fcfa",
+    component: BusinessCardRecto5,
+    backComponent: BusinessCardVerso5
+  },
+  {
+    id: 8,
+    price: "700 fcfa",
+    component: BusinessCardRecto6,
+    backComponent: BusinessCardVerso6
   },
 ];
 

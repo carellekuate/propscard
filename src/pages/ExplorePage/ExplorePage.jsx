@@ -24,6 +24,12 @@ import BusinessCardRecto2 from '../../components/CardTemplates/BusinessCardRecto
 import BusinessCardVerso2  from '../../components/CardTemplates/BusinessCardVerso2';
 import BusinessCardRecto3 from '../../components/CardTemplates/BusinessCardRecto3';
 import BusinessCardVerso3  from '../../components/CardTemplates/BusinessCardVerso3';
+import BusinessCardRecto4 from '../../components/CardTemplates/BusinessCardRecto4';
+import BusinessCardVerso4  from '../../components/CardTemplates/BusinessCardVerso4';
+import BusinessCardRecto5 from '../../components/CardTemplates/BusinessCardRecto5';
+import BusinessCardVerso5  from '../../components/CardTemplates/BusinessCardVerso5';
+import BusinessCardRecto6 from '../../components/CardTemplates/BusinessCardRecto6';
+import BusinessCardVerso6  from '../../components/CardTemplates/BusinessCardVerso6';
 
 import Template1Front from '../../components/CardTemplates/Template1Front';
 import Template2Front from '../../components/CardTemplates/Template2Front';
@@ -64,6 +70,27 @@ export default function ExplorePage() {
       price: "750 fcfa",
       component: BusinessCardRecto1,
       backComponent: BusinessCardVerso1
+    },
+    { 
+      id: 5, 
+      title: "Design rouge moderne",
+      price: "600 fcfa",
+      component: BusinessCardRecto4,
+      backComponent: BusinessCardVerso4
+    },
+    { 
+      id: 6, 
+      title: "Design rouge élégant",
+      price: "650 fcfa",
+      component: BusinessCardRecto5,
+      backComponent: BusinessCardVerso5
+    },
+    { 
+      id: 7, 
+      title: "Design jaune et noir",
+      price: "700 fcfa",
+      component: BusinessCardRecto6,
+      backComponent: BusinessCardVerso6
     },
   ];
 

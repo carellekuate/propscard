@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import './PricingPage.css'; // Nous créerons ce fichier CSS
 
 const PricingPage = () => {

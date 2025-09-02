@@ -7,6 +7,12 @@ import BusinessCardRecto2 from '../../components/CardTemplates/BusinessCardRecto
 import BusinessCardVerso2 from '../../components/CardTemplates/BusinessCardVerso2';
 import BusinessCardRecto3 from '../../components/CardTemplates/BusinessCardRecto3';
 import BusinessCardVerso3 from '../../components/CardTemplates/BusinessCardVerso3';
+import BusinessCardRecto4 from '../../components/CardTemplates/BusinessCardRecto4';
+import BusinessCardVerso4 from '../../components/CardTemplates/BusinessCardVerso4';
+import BusinessCardRecto5 from '../../components/CardTemplates/BusinessCardRecto5';
+import BusinessCardVerso5 from '../../components/CardTemplates/BusinessCardVerso5';
+import BusinessCardRecto6 from '../../components/CardTemplates/BusinessCardRecto6';
+import BusinessCardVerso6 from '../../components/CardTemplates/BusinessCardVerso6';
 import Template1Front from '../../components/CardTemplates/Template1Front';
 import Template2Front from '../../components/CardTemplates/Template2Front';
 import Template1Back from '../../components/CardTemplates/Template1Back';
@@ -36,6 +42,24 @@ const allTemplates = [
     price: "750 fcfa",
     component: Template2Front,
     backComponent: Template2Back
+  },
+  { 
+    id: 5, 
+    price: "600 fcfa",
+    component: BusinessCardRecto4,
+    backComponent: BusinessCardVerso4
+  },
+  { 
+    id: 6, 
+    price: "650 fcfa",
+    component: BusinessCardRecto5,
+    backComponent: BusinessCardVerso5
+  },
+  { 
+    id: 7, 
+    price: "700 fcfa",
+    component: BusinessCardRecto6,
+    backComponent: BusinessCardVerso6
   },
 ];
 
