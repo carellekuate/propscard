@@ -1,72 +1,169 @@
+import React, { useState } from 'react';
+import './PrintOptionPageStyle.css';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
-import "./PrintOptionPageStyle.css";
-import img1 from "../../assets/images/1.png";
-import img2 from "../../assets/images/2.png";
-export default function PrintOptionPage() {
-  const navigate = useNavigate();
+import BusinessCardRecto1 from '../../components/CardTemplates/BusinessCardRecto1';
+import BusinessCardVerso1 from '../../components/CardTemplates/BusinessCardVerso1';
+import BusinessCardRecto2 from '../../components/CardTemplates/BusinessCardRecto2';
+import BusinessCardVerso2 from '../../components/CardTemplates/BusinessCardVerso2';
+import BusinessCardRecto3 from '../../components/CardTemplates/BusinessCardRecto3';
+import BusinessCardVerso3 from '../../components/CardTemplates/BusinessCardVerso3';
+import Template1Front from '../../components/CardTemplates/Template1Front';
+import Template2Front from '../../components/CardTemplates/Template2Front';
+import Template1Back from '../../components/CardTemplates/Template1Back';
+import Template2Back from '../../components/CardTemplates/Template2Back';
+// Ajoutez ces imports
+import BusinessCardRecto4 from '../../components/CardTemplates/BusinessCardRecto4';
+import BusinessCardVerso4 from '../../components/CardTemplates/BusinessCardVerso4';
+import BusinessCardRecto5 from '../../components/CardTemplates/BusinessCardRecto5';
+import BusinessCardVerso5 from '../../components/CardTemplates/BusinessCardVerso5';
+import BusinessCardRecto6 from '../../components/CardTemplates/BusinessCardRecto6';
+import BusinessCardVerso6 from '../../components/CardTemplates/BusinessCardVerso6';
+
+// Modifiez le tableau allTemplates pour inclure les nouvelles cartes
+const allTemplates = [
+  {
+    id: 1,
+    price: "500 fcfa",
+    component: BusinessCardRecto1,
+    backComponent: BusinessCardVerso1
+  },
+  {
+    id: 2,
+    price: "750 fcfa",
+    component: BusinessCardRecto2,
+    backComponent: BusinessCardVerso2
+  },
+  {
+    id: 3,
+    price: "500 fcfa",
+    component: BusinessCardRecto3,
+    backComponent: BusinessCardVerso3
+  },
+  {
+    id: 4,
+    price: "750 fcfa",
+    component: Template1Front,
+    backComponent: Template1Back
+  },
+  {
+    id: 5,
+    price: "1000 fcfa",
+    component: Template2Front,
+    backComponent: Template2Back
+  },
+  {
+    id: 6,
+    price: "600 fcfa",
+    component: BusinessCardRecto4,
+    backComponent: BusinessCardVerso4
+  },
+  {
+    id: 7,
+    price: "650 fcfa",
+    component: BusinessCardRecto5,
+    backComponent: BusinessCardVerso5
+  },
+  {
+    id: 8,
+    price: "700 fcfa",
+    component: BusinessCardRecto6,
+    backComponent: BusinessCardVerso6
+  },
+];
+
+// Composant de filigrane pour les cartes (identique à PreviewPage)
+const WatermarkOverlay = ({ data }) => {
+  return (
+    <div className="card-watermark">
+      <div className="watermark-line">NON PAYÉ - {data.name || 'UTILISATEUR'}</div>
+      <div className="watermark-line">{new Date().toLocaleDateString()}</div>
+      <div className="watermark-line">{document.location.hostname}</div>
+    </div>
+  );
+};
+
+const PrintOptionsPage = () => {
   const location = useLocation();
-  const { cardData } = location.state || {};
+  const navigate = useNavigate();
+  const { cardData, templateId, action } = location.state || {};
 
-  const [format, setFormat] = useState('standard');
+  const template = allTemplates.find(t => t.id === templateId);
   const [quantity, setQuantity] = useState(100);
+  const [format, setFormat] = useState('standard');
 
-  const handleGoToCheckout = () => {
-    navigate("/checkout", {
+  if (!template || !cardData) {
+    return <div className="error-message">Données manquantes ou template non trouvé.</div>
+  }
+
+  const designPrice = parseInt(template.price.replace(/\D/g, ''));
+  const printPricePerCard = 10;
+  const totalPrice = designPrice + (quantity * printPricePerCard);
+
+  const handleCheckout = () => {
+    navigate('/payment-method', {
       state: {
-        cardData,
+        cardData: JSON.parse(JSON.stringify(cardData)),
+        templateId,
+        quantity,
         format,
-        quantity
+        totalPrice,
+        action
       }
     });
   };
+  
+  const TemplateFrontPreview = template.component;
+  const TemplateBackPreview = template.backComponent;
 
   return (
     <div className="printOptionContainer">
-      <h2>Options d'impression</h2>
+      <h1>Options d'impression</h1>
 
-      {/* Prévisualisation des infos */}
       <div className="cardPreview">
-        <p>Nom : {cardData?.name}</p>
-        <p>Poste : {cardData?.jobTitle}</p>
-        <p>Localisation : {cardData?.location}</p>
-        <p>Téléphone : {cardData?.phone}</p>
-        <p>Email : {cardData?.email}</p>
-        <p>Format sélectionné : {format}</p>
-        <p>Quantité : {quantity}</p>
-        <p>Prix total : {(quantity * 0.50).toFixed(2)} FCFA</p>
-       {/* <img src={cardData?.image || img1} alt="Prévisualisation" className="cardImage" /> */}
-       {/* <img src={cardData?.image || img2} alt="Prévisualisation" className="cardImage" /> */}
+        <h3>Aperçu de votre carte</h3>
+        <div className="card-side1">
+          <div className="card-preview-modal1">
+            <TemplateFrontPreview data={cardData} />
+            <WatermarkOverlay data={cardData} />
+          </div>
+          <div className="card-preview-modal1">
+            <TemplateBackPreview data={cardData} />
+            <WatermarkOverlay data={cardData} />
+          </div>
+        </div>
       </div>
 
       <div className="optionGroup">
-        <label>
-          Format :
-          <select value={format} onChange={(e) => setFormat(e.target.value)}>
-            <option value="standard">Standard (85×55 mm)</option>
-            <option value="square">Carré (55×55 mm)</option>
-            <option value="slim">Slim (85×35 mm)</option>
-          </select>
-        </label>
+        <label>Quantité:</label>
+        <input
+          type="number"
+          min="50"
+          max="1000"
+          value={quantity}
+          onChange={(e) => setQuantity(Number(e.target.value))}
+        />
       </div>
 
       <div className="optionGroup">
-        <label>
-          Quantité :
-          <input 
-            type="number" 
-            min="50" 
-            max="1000" 
-            step="50"
-            value={quantity}
-            onChange={(e) => setQuantity(Number(e.target.value))}
-          />
-        </label>
+        <label>Format:</label>
+        <select value={format} onChange={(e) => setFormat(e.target.value)}>
+          <option value="standard">Standard (85×55 mm)</option>
+          <option value="square">Carré (55×55 mm)</option>
+          <option value="slim">Slim (85×35 mm)</option>
+        </select>
       </div>
 
-      <button className="paymentButton" onClick={handleGoToCheckout}>
+      <div className="price-info">
+        <p>Prix conception: {designPrice} fcfa</p>
+        <p>Prix impression: {quantity} × {printPricePerCard} fcfa = {quantity * printPricePerCard} fcfa</p>
+        <h3>Total: {totalPrice.toLocaleString()} fcfa</h3>
+      </div>
+
+      <button className="paymentButton" onClick={handleCheckout}>
         Passer au paiement
       </button>
     </div>
   );
-}
+};
+
+export default PrintOptionsPage;

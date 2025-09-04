@@ -1,5 +1,7 @@
-// Importation des dépendances
+// App.js
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { LanguageProvider } from './context/LanguageContext';
+import { useState, useEffect } from 'react';
 
 // Importation des pages
 import HomePage from './pages/HomePage/HomePage';
@@ -7,18 +9,57 @@ import ExplorePage from './pages/ExplorePage/ExplorePage';
 import EditPage from './pages/EditPage/EditPage';
 import PrintOptionPage from './pages/EditPage/PrintOptionPage';
 import CheckoutPage from './pages/EditPage/CheckoutPage';
+import PaymentMethodPage from './pages/EditPage/PaymentMethodPage';
+import TransactionPage from './pages/EditPage/TransactionPage';
+import PayementConfirmation from './pages/EditPage/PayementConfirmation';
+import AboutPage from './pages/AboutPage';
+import PricingPage from './pages/pricing/PricingPage';
+import ContactPage from './pages/ContactPage';
+import PreviewPage from './components/PreviewPage/PreviewPage';
+
+// Export des liens de navigation (à déplacer dans un fichier séparé)
+export const navLinks = [
+  { path: "/", nameFr: "Accueil", nameEn: "Home" },
+  { path: "/explore", nameFr: "Explorer", nameEn: "Explore" },
+  { path: "/pricing", nameFr: "Tarifs", nameEn: "Pricing" },
+  { path: "/about", nameFr: "À propos", nameEn: "About" },
+  { path: "/contact", nameFr: "Contact", nameEn: "Contact" }
+];
 
 function App() {
+  const [languageUpdate, setLanguageUpdate] = useState(0);
+  
+  useEffect(() => {
+    const handleLanguageChange = () => {
+      setLanguageUpdate(prev => prev + 1);
+    };
+    
+    window.addEventListener('languageChange', handleLanguageChange);
+    
+    return () => {
+      window.removeEventListener('languageChange', handleLanguageChange);
+    };
+  }, []);
+
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/explore" element={<ExplorePage />} />
-        <Route path="/edit-page" element={<ExplorePage />} />
-        <Route path="/print-options" element={<PrintOptionPage />} />
-        <Route path="/checkout" element={<CheckoutPage />} />
-      </Routes>
-    </Router>
+    <LanguageProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<HomePage key={languageUpdate} />} />
+          <Route path="/explore" element={<ExplorePage key={languageUpdate} />} />
+          <Route path="/edit" element={<EditPage key={languageUpdate} />} />
+          <Route path="/print-options" element={<PrintOptionPage key={languageUpdate} />} />
+          <Route path="/checkout" element={<CheckoutPage key={languageUpdate} />} />
+          <Route path="/payment-method" element={<PaymentMethodPage key={languageUpdate} />} />
+          <Route path="/transaction/:method" element={<TransactionPage key={languageUpdate} />} />
+          <Route path="/payment-confirmation" element={<PayementConfirmation key={languageUpdate} />} />
+          <Route path="/about" element={<AboutPage key={languageUpdate} />} />
+          <Route path="/pricing" element={<PricingPage key={languageUpdate} />} />
+          <Route path="/contact" element={<ContactPage key={languageUpdate} />} />
+          <Route path="/preview" element={<PreviewPage key={languageUpdate} />} />
+        </Routes>
+      </Router>
+    </LanguageProvider>
   );
 }
 
