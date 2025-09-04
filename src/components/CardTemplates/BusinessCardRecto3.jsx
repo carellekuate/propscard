@@ -21,7 +21,6 @@ const BusinessCardRecto3 = ({ data = {} }) => {
       margin: 0,
       padding: 0,
       display: 'flex',
-      borderRadius: '20px',
       boxShadow: '0 10px 30px rgba(0, 0, 0, 0.15)',
       flexDirection: 'column',
       alignItems: 'flex-start',

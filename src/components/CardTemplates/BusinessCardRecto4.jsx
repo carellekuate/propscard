@@ -4,94 +4,127 @@ const BusinessCardRecto4 = ({ data = {} }) => {
   const {
     companyName = "LOREM IPSUM",
     tagline = "YOUR TAG HERE!",
+    phone = "+123-456-7890",
+   addressLine1 = "your street here",
+    email = "your@email.com",
     logo
   } = data;
 
   return (
     <div style={{
-       width: '340px',
+      width: '340px',
       height: '216px',
-      backgroundColor: 'white',
-      borderRadius: '15px',
+      background: 'white',
+      border: '1px solid #2c3e50',
       boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
       display: 'flex',
       flexDirection: 'column',
-      justifyContent: 'center',
-      alignItems: 'center',
       fontFamily: 'sans-serif',
-      position: 'relative',
       overflow: 'hidden',
+      position: 'relative'
     }}>
+      {/* En-tête avec nom de l'entreprise */}
       <div style={{
-        position: 'absolute',
-        top: '0',
-        left: '0',
-        width: '100%',
-        height: '40%',
-        backgroundColor: '#e74c3c',
+        background: '#2c3e50',
+        color: 'white',
+        padding: '15px 20px',
+        textAlign: 'center'
+      }}>
+        <h2 style={{
+          margin: 0,
+          fontSize: '20px',
+          fontWeight: 'bold',
+          letterSpacing: '1px'
+        }}>{companyName}</h2>
+        <p style={{
+          margin: '5px 0 0',
+          fontSize: '12px',
+          color: '#ecf0f1'
+        }}>{tagline}</p>
+      </div>
+
+      {/* Corps de la carte */}
+      <div style={{
+        flex: 1,
+        padding: '20px',
         display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'flex-end',
-        paddingBottom: '20px',
+        flexDirection: 'column',
+        justifyContent: 'center'
       }}>
-        {logo ? (
-          <img src={logo} alt="Company Logo" style={{
-            position: 'absolute',
-            top: '20px',
-            left: '20px',
-            width: '40px',
-            height: '40px',
-            border: '2px solid white',
-            borderRadius: '5px',
-            objectFit: 'cover'
-          }} />
-        ) : (
+        {/* Numéro de téléphone */}
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          marginBottom: '15px'
+        }}>
           <div style={{
-            position: 'absolute',
-            top: '20px',
-            left: '20px',
+            width: '30px',
+            height: '30px',
+            borderRadius: '50%',
+            background: '#3498db',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginRight: '12px',
+            color: 'white'
+          }}>📞</div>
+          <span style={{ fontSize: '14px' }}>{phone}</span>
+        </div>
+
+        {/* Site web */}
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          marginBottom: '15px'
+        }}>
+          <div style={{
+            width: '30px',
+            height: '30px',
+            borderRadius: '50%',
+            background: '#e74c3c',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginRight: '12px',
+            color: 'white'
+          }}>📍</div>
+          <span style={{ fontSize: '14px' }}>{addressLine1}</span>
+        </div>
+
+        {/* Email */}
+        <div style={{
+          display: 'flex',
+          alignItems: 'center'
+        }}>
+          <div style={{
+            width: '30px',
+            height: '30px',
+            borderRadius: '50%',
+            background: '#2ecc71',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginRight: '12px',
+            color: 'white'
+          }}>✉️</div>
+          <span style={{ fontSize: '14px' }}>{email}</span>
+        </div>
+      </div>
+
+      {/* Logo en bas à droite */}
+      {logo && (
+        <div style={{
+          position: 'absolute',
+          bottom: '15px',
+          right: '15px'
+        }}>
+          <img src={logo} alt="Company Logo" style={{
             width: '40px',
             height: '40px',
-            border: '2px solid white',
-            borderRadius: '5px',
-            transform: 'rotate(90deg)',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
-            <div style={{
-              width: '20px',
-              height: '20px',
-              border: '2px solid white',
-              borderRadius: '5px',
-              transform: 'rotate(45deg)',
-            }}></div>
-          </div>
-        )}
-      </div>
-      <div style={{
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        textAlign: 'center',
-        color: '#e74c3c',
-        fontWeight: 'bold',
-        fontSize: '24px',
-      }}>
-        {companyName}
-      </div>
-      <div style={{
-        position: 'absolute',
-        top: '65%',
-        left: '50%',
-        transform: 'translateX(-50%)',
-        color: 'gray',
-        fontSize: '12px',
-        letterSpacing: '2px',
-      }}>
-        {tagline}
-      </div>
+            objectFit: 'contain'
+          }} />
+        </div>
+      )}
     </div>
   );
 };

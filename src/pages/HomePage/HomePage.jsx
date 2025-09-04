@@ -5,27 +5,27 @@ import "./HomePageStyles.css";
 import heroBackground from "../../assets/images/mockup3.jpg";
 
 // Importation des images de cartes
-import card1 from "../../assets/images/fab.PNG";
-import card2 from '../../assets/images/fb1.PNG';
-import card3 from '../../assets/images/fi.PNG';
-import card4 from '../../assets/images/fj.PNG';
-import card5 from '../../assets/images/fa1.PNG';
-import card6 from '../../assets/images/fo.PNG';
-import card7 from '../../assets/images/ft.PNG';
-import card8 from '../../assets/images/fk.PNG';
-import card9 from '../../assets/images/fa2.PNG';
-import card10 from '../../assets/images/fs.PNG';
-import card11 from '../../assets/images/fe.PNG';
-import card12 from '../../assets/images/fg.PNG';
+import card1 from "../../assets/images/fab.png";
+import card2 from '../../assets/images/fb1.png';
+import card3 from '../../assets/images/fi.png';
+import card4 from '../../assets/images/fj.png';
+import card5 from '../../assets/images/fa1.png';
+import card6 from '../../assets/images/fo.png';
+import card7 from '../../assets/images/ft.png';
+import card8 from '../../assets/images/fk.png';
+import card9 from '../../assets/images/fa2.png';
+import card10 from '../../assets/images/fs.png';
+import card11 from '../../assets/images/fe.png';
+import card12 from '../../assets/images/fg.png';
 
 // Importations des composantes
 import Footer from "../../components/footer/Footer";
 import Navbar from "../../components/navbar/Navbar";
 
 // Importation des avatars pour les avis
-import avatar1 from "../../assets/images/fab.PNG";
-import avatar2 from '../../assets/images/fb1.PNG';
-import avatar3 from '../../assets/images/fi.PNG';
+import avatar1 from "../../assets/images/fab.png";
+import avatar2 from '../../assets/images/fb1.png';
+import avatar3 from '../../assets/images/fi.png';
 
 // Importation des liens de navigation
 import { navLinks } from "../../constants/NavLinks";

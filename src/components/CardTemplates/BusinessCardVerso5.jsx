@@ -2,160 +2,126 @@ import React from 'react';
 
 const BusinessCardVerso5 = ({ data = {} }) => {
   const {
-    name = "YOUR NAME",
-    jobTitle = "JOB TITLE",
-    phone = "+123-456-7890",
-    email = "your@email.com",
-    website = "www.sample.com",
-    addressLine1 = "Your address",
-    companyName = "LOREM IPSUM",
-    tagline = "YOUR TAG HERE!",
+    companyName = "BRAND NAME",
+    tagline = "TAGLINE SPACE",
+    website = "www.websitename.com",
     logo
   } = data;
 
   return (
     <div style={{
-        width: '340px',
-      height: '216px',
-      backgroundColor: 'white',
-      borderRadius: '15px',
-      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+      margin: "0",
+      padding: 0,
       display: 'flex',
-      fontFamily: 'sans-serif',
+      flexDirection: 'column',
+      boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)',
+      alignItems: 'center',
+      justifyContent: 'center',
+      overflow: 'hidden', 
     }}>
       <div style={{
-        flex: 1,
-        backgroundColor: '#e74c3c',
-        borderTopLeftRadius: '15px',
-        borderBottomLeftRadius: '15px',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        color: 'white',
-        padding: '20px',
+        width: '340px',
+        height: '216px',
+        background: '#1a1a1a',
+        position: 'relative',
+        overflow: 'hidden',
+      
       }}>
-        {logo ? (
-          <img src={logo} alt="Company Logo" style={{
-            width: '50px',
-            height: '50px',
-            border: '2px solid white',
-            borderRadius: '8px',
-            objectFit: 'cover',
-            marginBottom: '15px'
-          }} />
-        ) : (
-          <div style={{
-            width: '50px',
-            height: '50px',
-            border: '2px solid white',
-            borderRadius: '8px',
-            transform: 'rotate(90deg)',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            marginBottom: '15px'
-          }}>
+        
+        {/* Main content area */}
+        <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          height: '100%',
+          paddingTop: '20px'
+        }}>
+          
+          {/* Logo */}
+          {logo ? (
+            <img src={logo} alt="Company Logo" style={{
+              width: '50px',
+              height: '50px',
+              borderRadius: '8px',
+              marginBottom: '20px'
+            }} />
+          ) : (
             <div style={{
-              width: '25px',
-              height: '25px',
-              border: '2px solid white',
-              borderRadius: '5px',
-              transform: 'rotate(45deg)',
-            }}></div>
-          </div>
-        )}
-        <div style={{
-          marginTop: '15px',
-          textAlign: 'center',
-        }}>
-          <h2 style={{
+              width: '50px',
+              height: '50px',
+              border: '3px solid #ff0000',
+              borderRadius: '8px',
+              position: 'relative',
+              marginBottom: '20px',
+              background: 'transparent'
+            }}>
+              <div style={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%) rotate(45deg)',
+                width: '20px',
+                height: '20px',
+                border: '2px solid #ff0000',
+                borderRadius: '2px'
+              }}></div>
+            </div>
+          )}
+          
+          {/* Company name */}
+          <div style={{
+            fontSize: '24px',
             fontWeight: 'bold',
-            fontSize: '18px',
-            margin: '0 0 5px',
-          }}>
-            {companyName}
-          </h2>
-          <p style={{
+            color: 'white',
+            marginBottom: '8px',
+            letterSpacing: '2px'
+          }}>{companyName}</div>
+          
+          {/* Tagline */}
+          <div style={{
             fontSize: '10px',
-            letterSpacing: '1px',
-            opacity: 0.8,
-            margin: 0,
-          }}>
-            {tagline}
-          </p>
+            color: '#888',
+            textAlign: 'center',
+            letterSpacing: '1px'
+          }}>{tagline}</div>
         </div>
-      </div>
-      <div style={{
-        flex: 1,
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        padding: '20px',
-        color: '#333',
-        borderTopRightRadius: '15px',
-        borderBottomRightRadius: '15px',
-      }}>
+        
+        {/* Top tab */}
         <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          marginBottom: '15px',
-          fontSize: '12px'
-        }}>
-          <span style={{
-            backgroundColor: '#e74c3c',
-            borderRadius: '50%',
-            color: 'white',
-            width: '25px',
-            height: '25px',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            marginRight: '10px',
-            fontSize: '12px'
-          }}>📍</span>
-          {addressLine1}
-        </div>
+          position: 'absolute',
+          top: '10px',
+          right: '20px',
+          width: '30px',
+          height: '40px',
+          background: '#666',
+          borderRadius: '0 0 15px 15px',
+          zIndex: 3
+        }}></div>
+        
+        {/* Left red accent */}
         <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          marginBottom: '15px',
-          fontSize: '12px'
-        }}>
-          <span style={{
-            backgroundColor: '#e74c3c',
-            borderRadius: '50%',
-            color: 'white',
-            width: '25px',
-            height: '25px',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            marginRight: '10px',
-            fontSize: '12px'
-          }}>📞</span>
-          {phone}
-        </div>
-       
+          position: 'absolute',
+          left: '20px',
+          top: '30px',
+          width: '4px',
+          height: '160px',
+          background: '#ff0000',
+          borderRadius: '2px',
+          zIndex: 3
+        }}></div>
+        
+        {/* Bottom red accent */}
         <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          fontSize: '12px'
-        }}>
-          <span style={{
-            backgroundColor: '#e74c3c',
-            borderRadius: '50%',
-            color: 'white',
-            width: '25px',
-            height: '25px',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            marginRight: '10px',
-            fontSize: '12px'
-          }}>✉️</span>
-          {email}
-        </div>
+          position: 'absolute',
+          bottom: '20px',
+          left: '20px',
+          width: '60px',
+          height: '4px',
+          background: '#ff0000',
+          borderRadius: '2px',
+          zIndex: 3
+        }}></div>
       </div>
     </div>
   );

@@ -2,160 +2,100 @@ import React from 'react';
 
 const BusinessCardVerso4 = ({ data = {} }) => {
   const {
-    name = "YOUR NAME",
-    jobTitle = "JOB TITLE",
-    phone = "+123-456-7890",
-    email = "your@email.com",
-    website = "www.sample.com",
-    addressLine1 = "Your address, Your city",
     companyName = "LOREM IPSUM",
     tagline = "YOUR TAG HERE!",
+    phone = "+123-456-7890",
+    email = "your@email.com",
     logo
   } = data;
 
   return (
     <div style={{
-       width: '340px',
+      width: '340px',
       height: '216px',
-      backgroundColor: 'white',
-      borderRadius: '15px',
+      background: 'linear-gradient(135deg, #3498db 0%, #2c3e50 100%)',
       boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
       display: 'flex',
+      flexDirection: 'column',
       fontFamily: 'sans-serif',
+      overflow: 'hidden',
+      color: 'white',
+      position: 'relative'
     }}>
+      {/* Logo au centre */}
       <div style={{
         flex: 1,
-        backgroundColor: '#e74c3c',
-        borderTopLeftRadius: '15px',
-        borderBottomLeftRadius: '15px',
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'center',
         alignItems: 'center',
-        color: 'white',
-        padding: '20px',
+        justifyContent: 'center',
+        padding: '20px'
       }}>
         {logo ? (
           <img src={logo} alt="Company Logo" style={{
-            width: '50px',
-            height: '50px',
-            border: '2px solid white',
-            borderRadius: '5px',
-            objectFit: 'cover',
-            marginBottom: '15px'
+            width: '70px',
+            height: '70px',
+            marginBottom: '15px',
+            objectFit: 'contain'
           }} />
         ) : (
           <div style={{
-            width: '50px',
-            height: '50px',
-            border: '2px solid white',
-            borderRadius: '5px',
-            transform: 'rotate(90deg)',
+            width: '70px',
+            height: '70px',
+            borderRadius: '50%',
+            background: 'rgba(255, 255, 255, 0.2)',
             display: 'flex',
-            justifyContent: 'center',
             alignItems: 'center',
-            marginBottom: '15px'
-          }}>
-            <div style={{
-              width: '25px',
-              height: '25px',
-              border: '2px solid white',
-              borderRadius: '5px',
-              transform: 'rotate(45deg)',
-            }}></div>
-          </div>
+            justifyContent: 'center',
+            marginBottom: '15px',
+            fontSize: '12px',
+            fontWeight: 'bold'
+          }}>LOGO</div>
         )}
-        <div style={{
-          marginTop: '15px',
+        
+        <h2 style={{
+          margin: '0 0 5px',
+          fontSize: '18px',
+          fontWeight: 'bold',
+          textAlign: 'center'
+        }}>{companyName}</h2>
+        
+        <p style={{
+          margin: 0,
+          fontSize: '12px',
           textAlign: 'center',
-        }}>
-          <h2 style={{
-            fontWeight: 'bold',
-            fontSize: '18px',
-            margin: '0 0 5px',
-          }}>
-            {companyName}
-          </h2>
-          <p style={{
-            fontSize: '10px',
-            letterSpacing: '1px',
-            opacity: 0.8,
-            margin: 0,
-          }}>
-            {tagline}
-          </p>
-        </div>
+          opacity: 0.9
+        }}>{tagline}</p>
       </div>
+
+      {/* Informations de contact en bas */}
       <div style={{
-        flex: 1,
+        background: 'rgba(0, 0, 0, 0.2)',
+        padding: '12px 20px',
         display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        padding: '20px',
-        color: '#333',
-        borderTopRightRadius: '15px',
-        borderBottomRightRadius: '15px',
+        justifyContent: 'space-between',
+        fontSize: '10px'
       }}>
-        <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          marginBottom: '10px',
-          fontSize: '12px'
-        }}>
-          <span style={{
-            backgroundColor: '#e74c3c',
-            borderRadius: '50%',
-            color: 'white',
-            width: '20px',
-            height: '20px',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            marginRight: '10px',
-            fontSize: '10px'
-          }}>📍</span>
-          {addressLine1}
+        <div>
+          <div style={{ marginBottom: '3px' }}>{phone}</div>
+          <div>{email}</div>
         </div>
-        <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          marginBottom: '10px',
-          fontSize: '12px'
-        }}>
-          <span style={{
-            backgroundColor: '#e74c3c',
-            borderRadius: '50%',
-            color: 'white',
-            width: '20px',
-            height: '20px',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            marginRight: '10px',
-            fontSize: '10px'
-          }}>📞</span>
-          {phone}
-        </div>
-        <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          fontSize: '12px'
-        }}>
-          <span style={{
-            backgroundColor: '#e74c3c',
-            borderRadius: '50%',
-            color: 'white',
-            width: '20px',
-            height: '20px',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            marginRight: '10px',
-            fontSize: '10px'
-          }}>✉️</span>
-          {email}
+        <div style={{ textAlign: 'right' }}>
+        
+          <div>Follow us on social media</div>
         </div>
       </div>
+
+      {/* Élément décoratif */}
+      <div style={{
+        position: 'absolute',
+        top: '15px',
+        right: '15px',
+        width: '30px',
+        height: '30px',
+        borderRadius: '50%',
+        background: 'rgba(255, 255, 255, 0.1)'
+      }}></div>
     </div>
   );
 };
