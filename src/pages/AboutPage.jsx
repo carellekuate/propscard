@@ -17,7 +17,7 @@ function AboutPage() {
       {/* Section Héro */}
       <div className="about-hero">
         <div className="hero-content">
-          <h1 className='hero-title'>À Propos de PropCards</h1>
+          <h1 className='hero-title'>À Propos de Printiva</h1>
           <p className='hero-subtitle'>Votre partenaire de confiance pour des cartes de visite exceptionnelles</p>
         </div>
       </div>

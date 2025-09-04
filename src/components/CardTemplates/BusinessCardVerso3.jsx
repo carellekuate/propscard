@@ -12,8 +12,8 @@ const BusinessCardVerso3 = ({ data = {} }) => {
 
   return (
     <div style={{
-      width: '85mm',
-      height: '55mm',
+      width: '340px',
+      height: '216px',
       margin: 0,
       padding: 0,
       display: 'flex',

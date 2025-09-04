@@ -167,21 +167,20 @@ export default function PreviewPage() {
       
       localStorage.setItem('pdfCaptureData', JSON.stringify(captureData));
       
-      // Rediriger vers le paiement
-      navigate('/payment-method', {
-        state: {
-          totalPrice: parseInt(template.price.replace(/\D/g, '')),
-          formData: JSON.parse(JSON.stringify(formData)),
-          templateId,
-          action: 'download'
-        }
-      });
-      
-    } catch (error) {
-      console.error('Erreur préparation téléchargement:', error);
-      alert('Erreur lors de la préparation du téléchargement');
-    }
-  };
+    navigate('/payment-method', {
+      state: {
+        totalPrice: parseInt(template.price.replace(/\D/g, '')),
+        formData: JSON.parse(JSON.stringify(formData)),
+        templateId,
+        action: 'download'
+      }
+    });
+    
+  } catch (error) {
+    console.error('Erreur préparation téléchargement:', error);
+    alert('Erreur lors de la préparation du téléchargement');
+  }
+};
 
   const handleOrder = () => {
     navigate('/print-options', {

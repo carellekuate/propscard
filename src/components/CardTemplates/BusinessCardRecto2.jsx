@@ -25,10 +25,9 @@ const BusinessCardRecto2 = ({ data = {} }) => {
       overflow: 'hidden',
     }}>
       <div style={{
-        width: '350px',
-        height: '200px',
+          width: '340px',
+      height: '216px',
         background: 'linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%)',
-        borderRadius: '8px',
         boxShadow: '0 10px 25px rgba(0,0,0,0.3)',
         position: 'relative',
         overflow: 'hidden'

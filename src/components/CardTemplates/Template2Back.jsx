@@ -15,8 +15,8 @@ const BusinessCard = () => {
       minHeight: '100vh'
     },
     businessCard: {
-      width: '350px',
-      height: '200px',
+     width: '340px',
+      height: '216px',
       background: 'white',
       borderRadius: '8px',
       boxShadow: '0 8px 16px rgba(0,0,0,0.2)',

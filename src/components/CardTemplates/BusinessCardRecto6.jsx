@@ -12,8 +12,8 @@ const BusinessCardRecto6 = ({ data = {} }) => {
 
   return (
     <div style={{
-      width: '350px',
-      height: '200px',
+       width: '340px',
+      height: '216px',
       backgroundColor: '#fff',
       borderRadius: '15px',
       boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',

@@ -30,12 +30,17 @@ import BusinessCardRecto5 from '../../components/CardTemplates/BusinessCardRecto
 import BusinessCardVerso5  from '../../components/CardTemplates/BusinessCardVerso5';
 import BusinessCardRecto6 from '../../components/CardTemplates/BusinessCardRecto6';
 import BusinessCardVerso6  from '../../components/CardTemplates/BusinessCardVerso6';
+import BusinessCardRecto7 from '../../components/CardTemplates/BusinessCardRecto7';
+import BusinessCardVerso7  from '../../components/CardTemplates/BusinessCardVerso7';    
+
 
 import Template1Front from '../../components/CardTemplates/Template1Front';
 import Template2Front from '../../components/CardTemplates/Template2Front';
 import Template1Back from '../../components/CardTemplates/Template1Back';
 import Template2Back from '../../components/CardTemplates/Template2Back';
 import PreviewModal from '../../components/PreviewModal/PreviewModal';
+
+
 
 export default function ExplorePage() {
   const navigate = useNavigate();
@@ -91,6 +96,13 @@ export default function ExplorePage() {
       price: "700 fcfa",
       component: BusinessCardRecto6,
       backComponent: BusinessCardVerso6
+    },
+    { 
+      id: 8, 
+      title: "Design jaune et noir",
+      price: "700 fcfa",
+      component: BusinessCardRecto7,
+      backComponent: BusinessCardVerso7
     },
   ];
 

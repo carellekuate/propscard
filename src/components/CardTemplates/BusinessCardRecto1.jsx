@@ -26,8 +26,8 @@ const BusinessCardRecto1 = ({ data = {} }) => {
       overflow: 'hidden',
     }}>
       <div style={{
-        width: '350px',
-        height: '200px',
+      width: '340px',
+      height: '216px',
         background: 'white',
         position: 'relative',
         overflow: 'hidden',
