@@ -1,20 +1,26 @@
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import "./CheckoutPageStyle.css";
 
 export default function CheckoutPage() {
   const location = useLocation();
-  const { cardData, format, quantity } = location.state || {};
+  const navigate = useNavigate();
+  const { cardData, format, quantity, totalPrice } = location.state || {};
 
   const handlePayment = () => {
-    alert("Paiement effectué avec succès !");
+    // Naviguer vers la page de choix de mode de paiement
+    navigate('/payment-method', { 
+      state: { 
+        totalPrice,
+        cardData,
+        format,
+        quantity
+      } 
+    });
   };
 
   if (!cardData) {
     return <p>Aucune donnée trouvée. Retournez à la page précédente.</p>;
   }
-
-  const pricePerCard = 0.50; // Prix d’exemple
-  const totalPrice = quantity * pricePerCard;
 
   return (
     <div className="checkoutContainer">
@@ -26,7 +32,8 @@ export default function CheckoutPage() {
         <p><strong>Poste :</strong> {cardData.jobTitle}</p>
         <p><strong>Format :</strong> {format}</p>
         <p><strong>Quantité :</strong> {quantity}</p>
-        <p><strong>Total :</strong> {totalPrice.toFixed(2)} €</p>
+        <p><strong>Prix par carte :</strong> {cardData?.price?.toLocaleString()} fcfa</p>
+        <p><strong>Total :</strong> {totalPrice?.toLocaleString()} fcfa</p>
       </div>
 
       <div className="paymentForm">

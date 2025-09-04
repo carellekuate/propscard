@@ -9,11 +9,16 @@
   text-align: center;
 }
 
+.name{
+  color: white;
+  box-shadow: '30px 30px 30px 30px rgba(0, 0, 0, 0.55)',
+}
+
 /* Variables pour un style cohérent */
 :root {
   --primary-color: #32327b;
   --secondary-color: #f0f0f0;
-  --text-color: #333;
+  --text-color: #000000;
   --light-text-color: #f5f5f5;
   --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -21,7 +26,7 @@
 /* Section Héro */
 .hero-section {
   position: relative;
-  height: 70vh;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,10 +34,11 @@
   text-align: center;
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
 }
 
-.hero-section::before {
-  content: "";
+.hero-overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -49,6 +55,7 @@
 .hero-content h1 {
   font-size: 3.5rem;
   margin-bottom: 10px;
+   font-family: "Montserrat", sans-serif;
 }
 
 .hero-content .slogan {
@@ -85,22 +92,137 @@
   background-color: #2a2a6b;
 }
 
-/* Section Cartes Récentes */
-.recent-cards-section h2,
-.user-reviews-section h2,
-.offers-comparison-section h2 {
-  font-size: 2.5rem;
-  color: var(--text-color);
-  margin-bottom: 40px;
+/* Section des cartes récentes avec arrière-plan */
+.recent-cards-section {
+  background-image: url(../../assets/images/bag10.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+/* Overlay pour améliorer la lisibilité du texte */
+.recent-cards-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.85);
+  z-index: 1;
+  opacity: 0.5;
+  
+}
+
+.recent-cards-section h1,
+.recent-cards-section .carousel-container,
+.recent-cards-section .carousel-indicators {
+  position: relative;
+  font-family: "Montserrat", sans-serif;
+  z-index: 2; /* Pour placer le contenu au-dessus de l'overlay */
+}
+
+/* Carrousel Styles */
+.carousel-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1900px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.carousel-wrapper {
+  overflow: hidden;
+  width: 100%;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+}
+
+.carousel-slide {
+  flex: 0 0 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .card-list {
   display: flex;
   justify-content: center;
   gap: 30px;
-  flex-wrap: wrap;
+  width: 100%;
+  padding: 0 20px;
 }
 
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.8);
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  color: var(--primary-color);
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-arrow:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.carousel-arrow-left {
+  left: 10px;
+}
+
+.carousel-arrow-right {
+  right: 10px;
+}
+
+.carousel-indicators {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.carousel-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  background-color: #ccc;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.carousel-indicator.active {
+  background-color: var(--primary-color);
+}
+
+/* Section Cartes Récentes */
+.recent-cards-section h1,
+.user-reviews-section h1,
+.offers-comparison-section h1 {
+  font-size: 2.5rem;
+  font-family: "Montserrat", sans-serif;
+  color: var(--text-color);
+  margin-bottom: 40px;
+}
+  
 .card-item {
   background-color: white;
   border-radius: 8px;
@@ -108,12 +230,23 @@
   overflow: hidden;
   width: 300px;
   text-align: left;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.card-item:hover {
+  transform: translateY(-5px);
 }
 
 .card-item img {
   width: 100%;
   height: 200px;
   object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.card-item:hover img {
+  transform: scale(1.05);
 }
 
 .card-details {
@@ -123,16 +256,19 @@
 .card-details h3 {
   font-size: 1.2rem;
   margin-bottom: 5px;
+  font-family: "Montserrat", sans-serif;
+  color: var(--primary-color);
 }
 
 .card-details p {
   color: #777;
   font-size: 0.9rem;
+    font-family: "Montserrat", sans-serif;
 }
 
 /* Section Avis des utilisateurs */
 .user-reviews-section {
-  background-color: var(--secondary-color);
+  background-color: rgb(255, 249, 249);
 }
 
 .review-list {
@@ -148,7 +284,7 @@
   border-radius: 8px;
   box-shadow: var(--box-shadow);
   max-width: 350px;
-  text-align: left;
+  text-align: right;
 }
 
 .review-header {
@@ -167,6 +303,7 @@
 
 .review-header h4 {
   margin: 0;
+    font-family: "Montserrat", sans-serif;
 }
 
 .review-text {
@@ -176,8 +313,21 @@
 
 /* Section Newsletter */
 .newsletter-section {
-  background-color: var(--primary-color);
-  color: var(--light-text-color);
+  background-image: url(../../assets/images/bag10.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+.recent-cards-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.35);
+  z-index: 1;
 }
 
 .newsletter-content {
@@ -185,14 +335,17 @@
   margin: 0 auto;
 }
 
-.newsletter-content h2 {
+.newsletter-content h1 {
   font-size: 2.5rem;
   margin-bottom: 10px;
+  color: #000000;
+    font-family: "Montserrat", sans-serif;
 }
 
 .newsletter-content p {
   font-size: 1.2rem;
   margin-bottom: 20px;
+    font-family: "Montserrat", sans-serif;
 }
 
 .newsletter-form {
@@ -226,7 +379,7 @@
 
 /* Section Comparaison des offres */
 .offers-comparison-section {
-  background-color: var(--secondary-color);
+  background-color: rgb(246, 245, 245);
 }
 
 .comparison-table {
@@ -249,6 +402,7 @@
   font-size: 1.5rem;
   margin-bottom: 20px;
   color: var(--primary-color);
+    font-family: "Montserrat", sans-serif;
 }
 
 .offer-column ul {
@@ -271,6 +425,27 @@
 }
 
 /* Responsive design */
+@media (max-width: 1200px) {
+  .card-list {
+    gap: 20px;
+  }
+  
+  .card-item {
+    width: calc(25% - 20px);
+  }
+}
+
+@media (max-width: 992px) {
+  .card-item {
+    width: calc(50% - 20px);
+    margin-bottom: 20px;
+  }
+  
+  .card-list {
+    flex-wrap: wrap;
+  }
+}
+
 @media (max-width: 768px) {
   .hero-content h1 {
     font-size: 2.5rem;
@@ -292,14 +467,23 @@
     width: 80%;
   }
 
-  .card-list,
+  .carousel-arrow {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+
+  .card-item {
+    width: 100%;
+    max-width: 300px;
+  }
+
   .review-list,
   .comparison-table {
     flex-direction: column;
     align-items: center;
   }
 
-  .card-item,
   .review-item,
   .offer-column {
     width: 90%;

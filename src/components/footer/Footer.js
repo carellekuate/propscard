@@ -7,11 +7,11 @@ const Footer = () => {
             <div className="container">
                 <div className="footer-content">
                     <div className="footer-section about">
-                        <h2>À Propos de Nous</h2>
-                        <p>Nous aidons les professionnels à créer des cartes de visite uniques et mémorables. Notre outil de création facile à utiliser vous permet de concevoir une carte qui vous ressemble.</p>
+                        <h3>À Propos de Nous</h3>
+                        <p className='footer-description'>Nous aidons les professionnels à créer des cartes de visite uniques et mémorables. Notre outil de création facile à utiliser vous permet de concevoir une carte qui vous ressemble.</p>
                     </div>
                     <div className="footer-section links">
-                        <h2>Liens Utiles</h2>
+                        <h3>Liens Utiles</h3>
                         <ul>
                             <li><a href="/creation-de-cartes">Création de Cartes</a></li>
                             <li><a href="/tarifs">Tarifs</a></li>
@@ -20,7 +20,7 @@ const Footer = () => {
                         </ul>
                     </div>
                     <div className="footer-section social">
-                        <h2>Suivez-nous</h2>
+                        <h3>Suivez-nous</h3>
                         <div className="social-links">
                             <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
                             <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
@@ -30,7 +30,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className="footer-bottom">
-                <p>&copy; {new Date().getFullYear()} MonSiteDeCartesDeVisite. Tous droits réservés.</p>
+                <p className='footer-copy'>&copy; {new Date().getFullYear()} MonSiteDeCartesDeVisite. Tous droits réservés.</p>
             </div>
         </footer>
     );
