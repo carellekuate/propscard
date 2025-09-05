@@ -2,7 +2,7 @@
 import "./HomePageStyles.css";
 
 // Importation de l'image d'arrière-plan
-import heroBackground from "../../assets/images/mockup3.jpg";
+import mockupImage from "../../assets/images/mockup3.jpg";
 
 // Importation des images de cartes
 import card1 from "../../assets/images/fab.png";
@@ -175,7 +175,7 @@ function HomePage() {
       <div 
         className="hero-section" 
         style={{ 
-          backgroundImage: `url(${heroBackground})`,
+          backgroundImage: `url(${mockupImage})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat'
