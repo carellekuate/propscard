@@ -4,6 +4,7 @@
 .all{
  
   background-color: #f9f9f9;
+  
 }
 
 
@@ -53,6 +54,7 @@ footer {
   position: relative;
   padding-top: 100%;
   overflow: hidden;
+  
 }
 
 .card-image-container img {
@@ -62,19 +64,20 @@ footer {
   width: 85mm;
   height: 5mm;
   object-fit: cover;
+
 }
 
 .card-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 0.5fr));
-  gap: 25px;
+  gap: 29px;
   justify-items: center;
   padding: 0 20px;
   width: 100%;
-  max-width: 1500px;
+  max-width: 1290px;
   margin: 0 auto;
   height: auto; /* Changé de 360px à auto */
-  min-height: 360px;
+  min-height: 360px;  
 }
 
 .card-item {
@@ -89,7 +92,7 @@ footer {
   height: 100%;
   width: 325px;
   max-width: 400px;
- 
+
 }
 
 .card-preview {
@@ -100,7 +103,9 @@ footer {
   overflow: hidden;
   position: relative;
   cursor: pointer;
+   
 }
+
 
 .preview-btn {
   position: absolute;
@@ -117,7 +122,7 @@ footer {
   transition: opacity 0.3s ease, transform 0.3s ease;
   font-size: 0.9rem;
   z-index: 10;
- 
+
 }
 
 .card-preview:hover .preview-btn {

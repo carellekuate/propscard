@@ -11,6 +11,12 @@ import BusinessCardRecto4 from '../../components/CardTemplates/BusinessCardRecto
 import BusinessCardVerso4 from '../../components/CardTemplates/BusinessCardVerso4';
 import BusinessCardRecto5 from '../../components/CardTemplates/BusinessCardRecto5';
 import BusinessCardVerso5 from '../../components/CardTemplates/BusinessCardVerso5';
+import BusinessCardRecto6 from '../../components/CardTemplates/BusinessCardRecto6';
+import BusinessCardVerso6 from '../../components/CardTemplates/BusinessCardVerso6'; 
+import BusinessCardRecto7 from '../../components/CardTemplates/BusinessCardRecto7';
+import BusinessCardVerso7 from '../../components/CardTemplates/BusinessCardVerso7' ;
+import BusinessCardRecto8 from '../../components/CardTemplates/BusinessCardRecto8'; 
+import BusinessCardVerso8 from '../../components/CardTemplates/BusinessCardVerso8' ;
 const allTemplates = [
   { 
     id: 1, 
@@ -41,9 +47,25 @@ const allTemplates = [
     price: "600 fcfa",
     component: BusinessCardRecto5,
     backComponent: BusinessCardVerso5
+  },
+  { 
+    id: 7, 
+    price: "800 fcfa",
+    component: BusinessCardRecto6,
+    backComponent: BusinessCardVerso6
+  },
+  { 
+    id: 8, 
+    price: "800 fcfa",
+    component: BusinessCardRecto7,
+    backComponent: BusinessCardVerso7
+  },
+  { 
+    id: 9, 
+    price: "800 fcfa",      
+    component: BusinessCardRecto8,    
+    backComponent: BusinessCardVerso8
   }
-
-,
 ];
 
 // Composant de filigrane pour les cartes

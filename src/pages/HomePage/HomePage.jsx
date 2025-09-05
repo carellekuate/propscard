@@ -31,12 +31,13 @@ import avatar3 from '../../assets/images/fi.png';
 import { navLinks } from "../../constants/NavLinks";
 // Importation de Link pour la navigation
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 function HomePage() {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const totalSlides = 3; // 3 lots de 4 cartes
-
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const carouselRef = useRef(null);
+  const intervalRef = useRef(null);
+  
   // Toutes les cartes
   const allCards = [
     {
@@ -113,30 +114,57 @@ function HomePage() {
     }
   ];
 
-  // Regrouper les cartes en lots de 4
-  const cardGroups = [];
-  for (let i = 0; i < allCards.length; i += 4) {
-    cardGroups.push(allCards.slice(i, i + 4));
-  }
+  // Dupliquer les cartes pour créer un effet infini
+  const duplicatedCards = [...allCards, ...allCards, ...allCards];
 
-  // Fonction pour passer au slide suivant
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev === totalSlides - 1 ? 0 : prev + 1));
-  };
-
-  // Fonction pour passer au slide précédent
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev === 0 ? totalSlides - 1 : prev - 1));
-  };
-
-  // Défilement automatique
+  // Défilement automatique infini
   useEffect(() => {
-    const interval = setInterval(() => {
-      nextSlide();
-    }, 5000); // Change de slide toutes les 5 secondes
+    const startAutoScroll = () => {
+      intervalRef.current = setInterval(() => {
+        setCurrentIndex(prev => {
+          if (prev >= allCards.length * 2 - 1) {
+            // Retourner au début sans animation
+            setTimeout(() => {
+              setCurrentIndex(0);
+            }, 0);
+            return allCards.length;
+          }
+          return prev + 1;
+        });
+      }, 3000);
+    };
 
-    return () => clearInterval(interval);
-  }, []);
+    startAutoScroll();
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, [allCards.length]);
+
+  // Gérer le clic sur les indicateurs
+  const handleIndicatorClick = (index) => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+    setCurrentIndex(index);
+    
+    // Redémarrer le défilement automatique après un délai
+    setTimeout(() => {
+      intervalRef.current = setInterval(() => {
+        setCurrentIndex(prev => {
+          if (prev >= allCards.length * 2 - 1) {
+            setTimeout(() => {
+              setCurrentIndex(0);
+            }, 0);
+            return allCards.length;
+          }
+          return prev + 1;
+        });
+      }, 3000);
+    }, 5000);
+  };
 
   return (
     <div className="all">
@@ -171,57 +199,62 @@ function HomePage() {
         </div>
       </div>
 
-      {/* Section des cartes les plus récentes avec carrousel */}
+      {/* Nouveau carousel infini avec défilement horizontal et effet de zoom */}
       <div className="section recent-cards-section">
         <h1>Cartes de visite les plus récentes</h1>
-        <div className="carousel-container">
-          <button className="carousel-arrow carousel-arrow-left" onClick={prevSlide}>
-            &#10094;
-          </button>
-          
+        
+        <div className="card-carousel-container">
           <div className="carousel-wrapper">
             <div 
-              className="carousel-track" 
-              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+              className="cards-container"
+              ref={carouselRef}
+              style={{ 
+                transform: `translateX(-${currentIndex * 320}px)`,
+                transition: currentIndex >= allCards.length * 2 ? 'none' : 'transform 0.5s ease-in-out'
+              }}
             >
-              {cardGroups.map((group, groupIndex) => (
-                <div key={groupIndex} className="carousel-slide">
-                  <div className="card-list">
-                    {group.map(card => (
-                      <div key={card.id} className="card-item">
-                        <Link to="/explore">
-                          <img src={card.image} alt={card.alt} />
-                        </Link>
-                        <div className="card-details">
-                          <h3>{card.title}</h3>
-                          <p></p>
-                        </div>
-                      </div>
-                    ))}
+              {duplicatedCards.map((card, index) => {
+                // Calculer la distance par rapport à la position centrale
+                const adjustedIndex = index % allCards.length;
+                const distanceFromCenter = Math.abs(adjustedIndex - (currentIndex % allCards.length));
+                const scaleValue = 1 - (distanceFromCenter * 0.15);
+                const opacityValue = 1 - (distanceFromCenter * 0.3);
+                
+                return (
+                  <div 
+                    key={`${card.id}-${index}`}
+                    className="card-item"
+                    style={{
+                      transform: `scale(${Math.max(0.7, scaleValue)})`,
+                      opacity: Math.max(0.3, opacityValue),
+                      zIndex: 12 - distanceFromCenter
+                    }}
+                  >
+                    <Link to="/explore">
+                      <img src={card.image} alt={card.alt} />
+                    </Link>
+                    <div className="card-details">
+                      <h3>{card.title}</h3>
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
           
-          <button className="carousel-arrow carousel-arrow-right" onClick={nextSlide}>
-            &#10095;
-          </button>
-        </div>
-        
-        {/* Indicateurs de slide */}
-        <div className="carousel-indicators">
-          {cardGroups.map((_, index) => (
-            <button
-              key={index}
-              className={`carousel-indicator ${index === currentSlide ? 'active' : ''}`}
-              onClick={() => setCurrentSlide(index)}
-            ></button>
-          ))}
+          {/* Indicateurs de points */}
+          <div className="carousel-indicators">
+            {allCards.map((_, index) => (
+              <button
+                key={index}
+                className={`indicator ${index === (currentIndex % allCards.length) ? 'active' : ''}`}
+                onClick={() => handleIndicatorClick(index)}
+              />
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* Le reste du code reste inchangé */}
       {/* Section des avis des utilisateurs */}
       <div className="section user-reviews-section">
         <h1>Commentaires des Clients </h1>

@@ -19,6 +19,12 @@ const Navbar = ({ navLinks }) => {
   const [showOrderCount, setShowOrderCount] = useState(false);
   const [showLanguageDropdown, setShowLanguageDropdown] = useState(false);
 
+  // Filtrer les liens pour exclure "Pricing"
+  const filteredNavLinks = navLinks.filter(link => 
+    link.name.toLowerCase() !== "pricing" && 
+    link.nameFr?.toLowerCase() !== "tarifs"
+  );
+
   // Fonction pour simuler la récupération du nombre de commandes
   const fetchOrderCount = () => {
     const randomCount = Math.floor(Math.random() * 100) + 1;
@@ -46,12 +52,12 @@ const Navbar = ({ navLinks }) => {
   // Traduction des liens de navigation
   const getTranslatedNavLinks = () => {
     if (language === 'fr') {
-      return navLinks.map(link => ({
+      return filteredNavLinks.map(link => ({
         ...link,
         name: link.nameFr || link.name
       }));
     } else {
-      return navLinks.map(link => ({
+      return filteredNavLinks.map(link => ({
         ...link,
         name: link.nameEn || link.name
       }));
