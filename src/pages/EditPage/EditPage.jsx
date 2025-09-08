@@ -142,6 +142,13 @@ export default function EditPage() {
   const TemplatePreview = template.component;
   const TemplateBackPreview = template.backComponent;
 
+  let orangeMoneyIcon;
+  try {
+    orangeMoneyIcon = require('../../assets/images/orange-money-icon.png');
+  } catch (e) {
+    orangeMoneyIcon = '';
+  }
+
   return (
     <div className="edit-page-container">     
       <p className="edit-page-title">Remplissez votre carte</p>
