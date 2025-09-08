@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 import './ExplorePageStyles.css';
 import { FaBeer } from 'react-icons/fa';
-import img2 from '../../assets/images/fb1.png';
+let img2;
+try {
+  img2 = require('../../assets/images/fb1.png');
+} catch (e) {
+  img2 = '';
+}
 import img3 from '../../assets/images/fo.png';
 import img4 from '../../assets/images/fg.png';
 import img5 from '../../assets/images/fi.png';
