@@ -13,7 +13,7 @@ import card5 from '../../assets/images/fa1.png';
 import card6 from '../../assets/images/fo.png';
 import card7 from '../../assets/images/ft.png';
 import card8 from '../../assets/images/fk.png';
-import card9 from '../../assets/images/fa2.png';
+import card9 from '../../assets/images/fa.png';
 import card10 from '../../assets/images/fs.png';
 import card11 from '../../assets/images/fe.png';
 import card12 from '../../assets/images/fg.png';
