@@ -2,7 +2,12 @@
 import "./HomePageStyles.css";
 
 // Importation de l'image d'arrière-plan
-import mockupImage from "../../assets/images/mockup.jpg";
+let mockupImage;
+try {
+  mockupImage = require("../../assets/images/mockup.jpg");
+} catch (e) {
+  mockupImage = '';
+}
 
 // Importation des images de cartes
 import card1 from "../../assets/images/fab.png";
