@@ -11,7 +11,12 @@ try {
 
 // Importation des images de cartes
 import card1 from "../../assets/images/fab.png";
-import card2 from '../../assets/images/fb1.png';
+let card2;
+try {
+  card2 = require('../../assets/images/fb1.png');
+} catch (e) {
+  card2 = '';
+}
 import card3 from '../../assets/images/fi.png';
 import card4 from '../../assets/images/fj.png';
 import card5 from '../../assets/images/fa1.png';
@@ -34,7 +39,12 @@ import Navbar from "../../components/navbar/Navbar";
 
 // Importation des avatars pour les avis
 import avatar1 from "../../assets/images/fab.png";
-import avatar2 from '../../assets/images/fb1.png';
+let avatar2;
+try {
+  avatar2 = require('../../assets/images/fb1.png');
+} catch (e) {
+  avatar2 = '';
+}
 import avatar3 from '../../assets/images/fi.png';
 
 // Importation des liens de navigation
