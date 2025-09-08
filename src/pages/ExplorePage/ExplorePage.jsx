@@ -1,42 +1,28 @@
 import React, { useState } from 'react';
 import './ExplorePageStyles.css';
-import { FaBeer } from 'react-icons/fa';
-import img1 from '../../assets/images/fa2.png';
-import img2 from '../../assets/images/fb1.png';
-import img3 from '../../assets/images/fo.png';
-import img4 from '../../assets/images/fg.png';
-import img5 from '../../assets/images/fi.png';
-import img6 from '../../assets/images/ft.png';
-import img7 from '../../assets/images/fy.png';
-import img8 from '../../assets/images/fz.png';
-import img9 from '../../assets/images/fs.png';
-import img10 from '../../assets/images/fab.png'; 
-import img11 from '../../assets/images/fe.png';
-import img12 from '../../assets/images/fk.png';    
+import { useNavigate } from 'react-router-dom';
+
 import { navLinks } from '../../constants/NavLinks';
 import Navbar from '../../components/navbar/Navbar';
 import Footer from '../../components/footer/Footer';
-import { useNavigate } from 'react-router-dom';
 
 import BusinessCardRecto1 from '../../components/CardTemplates/BusinessCardRecto1';
-import BusinessCardVerso1  from '../../components/CardTemplates/BusinessCardVerso1';
+import BusinessCardVerso1 from '../../components/CardTemplates/BusinessCardVerso1';
 import BusinessCardRecto2 from '../../components/CardTemplates/BusinessCardRecto2';
-import BusinessCardVerso2  from '../../components/CardTemplates/BusinessCardVerso2';
+import BusinessCardVerso2 from '../../components/CardTemplates/BusinessCardVerso2';
 import BusinessCardRecto3 from '../../components/CardTemplates/BusinessCardRecto3';
-import BusinessCardVerso3  from '../../components/CardTemplates/BusinessCardVerso3';
-import BusinessCardRecto4   from '../../components/CardTemplates/BusinessCardRecto4';
-import BusinessCardVerso4  from '../../components/CardTemplates/BusinessCardVerso4';
+import BusinessCardVerso3 from '../../components/CardTemplates/BusinessCardVerso3';
+import BusinessCardRecto4 from '../../components/CardTemplates/BusinessCardRecto4';
+import BusinessCardVerso4 from '../../components/CardTemplates/BusinessCardVerso4';
 import BusinessCardRecto5 from '../../components/CardTemplates/BusinessCardRecto5';   
-import BusinessCardVerso5  from '../../components/CardTemplates/BusinessCardVerso5';
+import BusinessCardVerso5 from '../../components/CardTemplates/BusinessCardVerso5';
 import BusinessCardRecto6 from '../../components/CardTemplates/BusinessCardRecto6';   
-import BusinessCardVerso6  from '../../components/CardTemplates/BusinessCardVerso6';  
+import BusinessCardVerso6 from '../../components/CardTemplates/BusinessCardVerso6';  
 import BusinessCardRecto7 from '../../components/CardTemplates/BusinessCardRecto7';   
-import BusinessCardVerso7  from '../../components/CardTemplates/BusinessCardVerso7';
+import BusinessCardVerso7 from '../../components/CardTemplates/BusinessCardVerso7';
 import BusinessCardRecto8 from '../../components/CardTemplates/BusinessCardRecto8';   
-import BusinessCardVerso8  from '../../components/CardTemplates/BusinessCardVerso8';
+import BusinessCardVerso8 from '../../components/CardTemplates/BusinessCardVerso8';
 import PreviewModal from '../../components/PreviewModal/PreviewModal';
-
-
 
 export default function ExplorePage() {
   const navigate = useNavigate();
@@ -69,7 +55,7 @@ export default function ExplorePage() {
       id: 4, 
       title: "Design élégant or",
       price: "750 fcfa",
-    component: BusinessCardRecto4,
+      component: BusinessCardRecto4,
       backComponent: BusinessCardVerso4
     },
     { 
@@ -78,8 +64,8 @@ export default function ExplorePage() {
       price: "600 fcfa",
       component: BusinessCardRecto5,
       backComponent: BusinessCardVerso5
-    }
-    ,{ 
+    },
+    { 
       id: 7, 
       title: "Design professionnel rouge",  
       price: "800 fcfa",
