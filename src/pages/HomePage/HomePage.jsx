@@ -2,7 +2,8 @@
 import "./HomePageStyles.css";
 
 // Importation de l'image d'arrière-plan
-import mockupImage from "../../assets/images/mockup.jpg";
+import mockupImage from "../../assets/images/mockup.JPG";
+
 
 // Importation des images de cartes
 import card1 from "../../assets/images/fab.png";
