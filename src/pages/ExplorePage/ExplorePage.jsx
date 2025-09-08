@@ -1,72 +1,18 @@
 import React, { useState } from 'react';
 import './ExplorePageStyles.css';
 import { FaBeer } from 'react-icons/fa';
-let img2;
-try {
-  img2 = require('../../assets/images/fb1.png');
-} catch (e) {
-  img2 = '';
-}
-let img3;
-try {
-  img3 = require('../../assets/images/fo.png');
-} catch (e) {
-  img3 = '';
-}
-let img4;
-try {
-  img4 = require('../../assets/images/fg.png');
-} catch (e) {
-  img4 = '';
-}
-let img5;
-try {
-  img5 = require('../../assets/images/fi.png');
-} catch (e) {
-  img5 = '';
-}
-let img6;
-try {
-  img6 = require('../../assets/images/ft.png');
-} catch (e) {
-  img6 = '';
-}
-let img7;
-try {
-  img7 = require('../../assets/images/fy.png');
-} catch (e) {
-  img7 = '';
-}
-let img8;
-try {
-  img8 = require('../../assets/images/fz.png');
-} catch (e) {
-  img8 = '';
-}
-let img9;
-try {
-  img9 = require('../../assets/images/fs.png');
-} catch (e) {
-  img9 = '';
-}
-let img10;
-try {
-  img10 = require('../../assets/images/fab.png');
-} catch (e) {
-  img10 = '';
-} 
-let img11;
-try {
-  img11 = require('../../assets/images/fe.png');
-} catch (e) {
-  img11 = '';
-}
-let img12;
-try {
-  img12 = require('../../assets/images/fk.png');
-} catch (e) {
-  img12 = '';
-}    
+import img1 from '../../assets/images/fa.png';
+import img2 from '../../assets/images/fb1.png';
+import img3 from '../../assets/images/fo.png';
+import img4 from '../../assets/images/fg.png';
+import img5 from '../../assets/images/fi.png';
+import img6 from '../../assets/images/ft.png';
+import img7 from '../../assets/images/fy.png';
+import img8 from '../../assets/images/fz.png';
+import img9 from '../../assets/images/fs.png';
+import img10 from '../../assets/images/fab.png'; 
+import img11 from '../../assets/images/fe.png';
+import img12 from '../../assets/images/fk.png';    
 import { navLinks } from '../../constants/NavLinks';
 import Navbar from '../../components/navbar/Navbar';
 import Footer from '../../components/footer/Footer';

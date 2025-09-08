@@ -2,110 +2,30 @@
 import "./HomePageStyles.css";
 
 // Importation de l'image d'arrière-plan
-let mockupImage;
-try {
-  mockupImage = require("../../assets/images/mockup.jpg");
-} catch (e) {
-  mockupImage = '';
-}
+import mockupImage from "../../assets/images/mockup.jpg";
 
 // Importation des images de cartes
-let card1;
-try {
-  card1 = require('../../assets/images/fab.png');
-} catch (e) {
-  card1 = '';
-}
-let card2;
-try {
-  card2 = require('../../assets/images/fb1.png');
-} catch (e) {
-  card2 = '';
-}
-let card3;
-try {
-  card3 = require('../../assets/images/fi.png');
-} catch (e) {
-  card3 = '';
-}
-let card4;
-try {
-  card4 = require('../../assets/images/fj.png');
-} catch (e) {
-  card4 = '';
-}
-let card5;
-try {
-  card5 = require('../../assets/images/fa1.png');
-} catch (e) {
-  card5 = '';
-}
-let card6;
-try {
-  card6 = require('../../assets/images/fo.png');
-} catch (e) {
-  card6 = '';
-}
-let card7;
-try {
-  card7 = require('../../assets/images/ft.png');
-} catch (e) {
-  card7 = '';
-}
-let card8;
-try {
-  card8 = require('../../assets/images/fk.png');
-} catch (e) {
-  card8 = '';
-}
-let card9;
-try {
-  card9 = require('../../assets/images/fa.png');
-} catch (e) {
-  card9 = '';
-}
-let card10;
-try {
-  card10 = require('../../assets/images/fs.png');
-} catch (e) {
-  card10 = '';
-}
-let card11;
-try {
-  card11 = require('../../assets/images/fe.png');
-} catch (e) {
-  card11 = '';
-}
-let card12;
-try {
-  card12 = require('../../assets/images/fg.png');
-} catch (e) {
-  card12 = '';
-}
+import card1 from "../../assets/images/fab.png";
+import card2 from '../../assets/images/fb1.png';
+import card3 from '../../assets/images/fi.png';
+import card4 from '../../assets/images/fj.png';
+import card5 from '../../assets/images/fa1.png';
+import card6 from '../../assets/images/fo.png';
+import card7 from '../../assets/images/ft.png';
+import card8 from '../../assets/images/fk.png';
+import card9 from '../../assets/images/fa.png';
+import card10 from '../../assets/images/fs.png';
+import card11 from '../../assets/images/fe.png';
+import card12 from '../../assets/images/fg.png';
 
 // Importations des composantes
 import Footer from "../../components/footer/Footer";
 import Navbar from "../../components/navbar/Navbar";
 
 // Importation des avatars pour les avis
-let avatar1;
-try {
-  avatar1 = require('../../assets/images/fab.png');
-} catch (e) {
-  avatar1 = '';
-}
-let avatar2;
-try {
-  avatar2 = require('../../assets/images/fb1.png');
-} catch (e) {
-  avatar2 = '';
-}
-let avatar3;
-try {
-  avatar3 = require('../../assets/images/fi.png');
-} catch (e) {
-  avatar3 = '';
-}
+import avatar1 from "../../assets/images/fab.png";
+import avatar2 from '../../assets/images/fb1.png';
+import avatar3 from '../../assets/images/fi.png';
 
 // Importation des liens de navigation
 import { navLinks } from "../../constants/NavLinks";
