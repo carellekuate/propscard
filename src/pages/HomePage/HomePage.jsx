@@ -10,7 +10,12 @@ try {
 }
 
 // Importation des images de cartes
-import card1 from "../../assets/images/fab.png";
+let card1;
+try {
+  card1 = require('../../assets/images/fab.png');
+} catch (e) {
+  card1 = '';
+}
 let card2;
 try {
   card2 = require('../../assets/images/fb1.png');
@@ -38,7 +43,12 @@ import Footer from "../../components/footer/Footer";
 import Navbar from "../../components/navbar/Navbar";
 
 // Importation des avatars pour les avis
-import avatar1 from "../../assets/images/fab.png";
+let avatar1;
+try {
+  avatar1 = require('../../assets/images/fab.png');
+} catch (e) {
+  avatar1 = '';
+}
 let avatar2;
 try {
   avatar2 = require('../../assets/images/fb1.png');

@@ -14,7 +14,12 @@ import img6 from '../../assets/images/ft.png';
 import img7 from '../../assets/images/fy.png';
 import img8 from '../../assets/images/fz.png';
 import img9 from '../../assets/images/fs.png';
-import img10 from '../../assets/images/fab.png'; 
+let img10;
+try {
+  img10 = require('../../assets/images/fab.png');
+} catch (e) {
+  img10 = '';
+} 
 import img11 from '../../assets/images/fe.png';
 import img12 from '../../assets/images/fk.png';    
 import { navLinks } from '../../constants/NavLinks';
