@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './EditPageStyles.css';
+import { FaBeer } from 'react-icons/fa';
+import orangeMoneyIcon from '../../assets/images/orange-money-icon.png';
 import { useNavigate, useLocation } from 'react-router-dom';
 import BusinessCardRecto1 from '../../components/CardTemplates/BusinessCardRecto1';
 import BusinessCardVerso1 from '../../components/CardTemplates/BusinessCardVerso1';
