@@ -1,12 +1,6 @@
 import React, { useState } from 'react';
 import './ExplorePageStyles.css';
 import { FaBeer } from 'react-icons/fa';
-let img1;
-try {
-  img1 = require('../../assets/images/fa.png');
-} catch (e) {
-  img1 = '';
-}
 import img2 from '../../assets/images/fb1.png';
 import img3 from '../../assets/images/fo.png';
 import img4 from '../../assets/images/fg.png';

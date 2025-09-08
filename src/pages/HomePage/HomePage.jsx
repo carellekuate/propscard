@@ -13,7 +13,12 @@ import card5 from '../../assets/images/fa1.png';
 import card6 from '../../assets/images/fo.png';
 import card7 from '../../assets/images/ft.png';
 import card8 from '../../assets/images/fk.png';
-import card9 from '../../assets/images/fa.png';
+let card9;
+try {
+  card9 = require('../../assets/images/fa.png');
+} catch (e) {
+  card9 = '';
+}
 import card10 from '../../assets/images/fs.png';
 import card11 from '../../assets/images/fe.png';
 import card12 from '../../assets/images/fg.png';
