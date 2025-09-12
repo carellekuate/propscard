@@ -9,6 +9,16 @@
   text-align: center;
 }
 
+.hero-text{
+  margin: 0;
+  color: var(--primary);
+  font-size: 30px;
+  line-height: 1.6;
+  letter-spacing: 0.1px;
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  text-align: left;
+  text-align: center;
+}
 .name{
   color: white;
   box-shadow: '30px 30px 30px 30px rgba(0, 0, 0, 0.55)',

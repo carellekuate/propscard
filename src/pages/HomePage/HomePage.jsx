@@ -192,11 +192,12 @@ function HomePage() {
             professionnelle.</span>
           </p>
           <div className="search-bar">
-            <input
-              type="text"
-              placeholder="Recherchez un design, un métier, un style..."
-            />
-            <button>Rechercher</button>
+            <p className="hero-text">
+              Chez Printiva Cards, nous croyons que la première impression compte. <br/>
+               Votre carte de visite n’est pas seulement un bout de papier, <br/>
+               mais le reflet de votre identité professionnelle. <br/>
+            </p>
+
           </div>
         </div>
       </div>
