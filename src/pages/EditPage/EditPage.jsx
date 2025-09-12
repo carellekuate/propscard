@@ -17,6 +17,7 @@ import BusinessCardRecto7 from '../../components/CardTemplates/BusinessCardRecto
 import BusinessCardVerso7 from '../../components/CardTemplates/BusinessCardVerso7';
 import BusinessCardRecto8 from '../../components/CardTemplates/BusinessCardRecto8';
 import BusinessCardVerso8 from '../../components/CardTemplates/BusinessCardVerso8';
+
 const allTemplates = [
   { 
     id: 1, 
@@ -76,6 +77,19 @@ const allTemplates = [
   }
 ];
 
+// Définition des limites de caractères
+const CHARACTER_LIMITS = {
+  name: 30,
+  jobTitle: 40,
+  phone: 15,
+  email: 40,
+  addressLine1: 50,
+  addressLine2: 50,
+  website: 40,
+  companyName: 30,
+  tagline: 60
+};
+
 export default function EditPage() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -99,10 +113,26 @@ export default function EditPage() {
   
   const [formData, setFormData] = useState(getInitialFormData());
   const [currentStep, setCurrentStep] = useState(1);
+  const [characterCount, setCharacterCount] = useState({
+    name: 0,
+    jobTitle: 0,
+    phone: 0,
+    email: 0,
+    addressLine1: 0,
+    addressLine2: 0,
+    website: 0,
+    companyName: 0,
+    tagline: 0
+  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    
+    // Vérifier la limite de caractères
+    if (value.length <= CHARACTER_LIMITS[name]) {
+      setFormData(prev => ({ ...prev, [name]: value }));
+      setCharacterCount(prev => ({ ...prev, [name]: value.length }));
+    }
   };
 
   const handleSubmit = (e) => {
@@ -170,7 +200,11 @@ export default function EditPage() {
                       className="form-input" 
                       placeholder="Entrez votre nom" 
                       required 
+                      maxLength={CHARACTER_LIMITS.name}
                     />
+                  </div>
+                  <div className="character-counter">
+                    {characterCount.name}/{CHARACTER_LIMITS.name} caractères
                   </div>
                 </div>
                 
@@ -185,7 +219,11 @@ export default function EditPage() {
                       className="form-input" 
                       placeholder="Votre poste" 
                       required 
+                      maxLength={CHARACTER_LIMITS.jobTitle}
                     />
+                  </div>
+                  <div className="character-counter">
+                    {characterCount.jobTitle}/{CHARACTER_LIMITS.jobTitle} caractères
                   </div>
                 </div>
                 
@@ -200,7 +238,11 @@ export default function EditPage() {
                       className="form-input" 
                       placeholder="Votre numéro" 
                       required 
+                      maxLength={CHARACTER_LIMITS.phone}
                     />
+                  </div>
+                  <div className="character-counter">
+                    {characterCount.phone}/{CHARACTER_LIMITS.phone} caractères
                   </div>
                 </div>
                 
@@ -215,7 +257,11 @@ export default function EditPage() {
                       className="form-input" 
                       placeholder="Votre email" 
                       required 
+                      maxLength={CHARACTER_LIMITS.email}
                     />
+                  </div>
+                  <div className="character-counter">
+                    {characterCount.email}/{CHARACTER_LIMITS.email} caractères
                   </div>
                 </div>
                 
@@ -241,7 +287,11 @@ export default function EditPage() {
                       onChange={handleChange} 
                       className="form-input" 
                       placeholder="Adresse " 
+                      maxLength={CHARACTER_LIMITS.addressLine1}
                     />
+                  </div>
+                  <div className="character-counter">
+                    {characterCount.addressLine1}/{CHARACTER_LIMITS.addressLine1} caractères
                   </div>
                 </div>
                 
@@ -255,7 +305,11 @@ export default function EditPage() {
                       onChange={handleChange} 
                       className="form-input" 
                       placeholder="Nom de votre entreprise" 
+                      maxLength={CHARACTER_LIMITS.companyName}
                     />
+                  </div>
+                  <div className="character-counter">
+                    {characterCount.companyName}/{CHARACTER_LIMITS.companyName} caractères
                   </div>
                 </div>
                 
@@ -269,7 +323,11 @@ export default function EditPage() {
                       onChange={handleChange} 
                       className="form-input" 
                       placeholder="Votre slogan" 
+                      maxLength={CHARACTER_LIMITS.tagline}
                     />
+                  </div>
+                  <div className="character-counter">
+                    {characterCount.tagline}/{CHARACTER_LIMITS.tagline} caractères
                   </div>
                 </div>
 

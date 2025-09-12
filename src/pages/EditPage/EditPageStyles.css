@@ -546,6 +546,28 @@
 /* .form-input::placeholder {
   color: var(--text-secondary);
 } */
+ /* Ajoutez ces styles à la fin du fichier */
+
+.character-counter {
+  font-size: 0.8rem;
+  color: #666;
+  text-align: right;
+  margin-top: 0.3rem;
+}
+
+.character-counter.warning {
+  color: #eae7e3;
+}
+
+.character-counter.limit-reached {
+  color: #c8c8c8;
+  font-weight: bold;
+}
+
+/* Style pour les champs qui dépassent la limite */
+.form-input:invalid {
+  border-color: #eae4e4;
+}
 
 .input-icon {
   position: absolute;

@@ -7,7 +7,7 @@ const BusinessCardRecto5 = ({ data = {} }) => {
     phone = "+00 1234 5XXX 9012",
     email = "your email space",
     website = "website address here",
-    address = "123 Dummy, Lorem Ipsum",
+     addressLine1 = "123 Dummy, Lorem Ipsum",
     companyName = "BRAND NAME",
     tagline = "TAGLINE SPACE",
     logo
@@ -76,7 +76,7 @@ const BusinessCardRecto5 = ({ data = {} }) => {
                 background: '#ff0000',
                 borderRadius: '2px'
               }}></div>
-              <span>{address}</span>
+              <span>{ addressLine1 }</span>
             </li>
             
             <li style={{
