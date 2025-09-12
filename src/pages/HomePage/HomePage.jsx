@@ -2,7 +2,7 @@
 import "./HomePageStyles.css";
 
 // Importation de l'image d'arrière-plan
-//import mockupImage from "../../assets/images/mockup5_temp.jpg";
+import mockupImage from "../../assets/images/mockup5_temp.jpg";
 // ...existing code...
 
 
