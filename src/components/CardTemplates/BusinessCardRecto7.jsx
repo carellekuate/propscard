@@ -96,7 +96,7 @@ const BusinessCardRecto7= ({ data = {} }) => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                fontSize: '8px',
+                fontSize: '5px',
                 color: 'white',
                 fontWeight: 'bold',
                 background: '#e53e3e'
@@ -121,7 +121,7 @@ const BusinessCardRecto7= ({ data = {} }) => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                fontSize: '8px',
+                fontSize: '5px',
                 color: 'white',
                 fontWeight: 'bold',
                 background: '#e53e3e'
