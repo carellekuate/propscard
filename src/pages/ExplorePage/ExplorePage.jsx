@@ -110,8 +110,11 @@ export default function ExplorePage() {
     <div className="all">
       <Navbar navLinks={navLinks} />
       <div className="products-page">
-        <h2>Nos Modèles de Cartes de Visite</h2>
-        <p className="subtitle">Choisissez un design qui représente votre entreprise</p>
+        <div className='title-section'>
+           <h2>Nos Modèles de Cartes de Visite</h2>
+           <p className="subtitle">Choisissez un design qui représente votre entreprise</p>
+        </div>
+       
 
         <div className="card-list">
           {cardDesigns.map((design) => (

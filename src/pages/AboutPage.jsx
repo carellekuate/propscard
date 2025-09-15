@@ -28,7 +28,7 @@ function AboutPage() {
           <div className="mission-text">
             <h2>Notre Mission</h2>
             <p>
-              Chez MK Production, nous croyons que chaque professionnel mérite une carte de visite 
+              Chez Printiva, nous croyons que chaque professionnel mérite une carte de visite 
               qui reflète parfaitement son identité et son expertise. Notre mission est de démocratiser 
               l'accès à des designs de qualité professionnelle, en proposant une plateforme intuitive 
               et des services d'impression premium.
@@ -49,7 +49,7 @@ function AboutPage() {
           <div className="timeline-item">
             <div className="timeline-year">2018</div>
             <div className="timeline-content">
-              <h3>Fondation de MK Production</h3>
+              <h3>Fondation de Printiva</h3>
               <p>Lancement avec une vision simple : rendre le design professionnel accessible à tous.</p>
             </div>
           </div>
@@ -88,7 +88,7 @@ function AboutPage() {
             <p>Fondatrice & Directrice Créative</p>
             <div className="member-bio">
               Designer graphique de formation, Marie a travaillé 10 ans dans l'industrie 
-              de l'impression avant de créer MK Production.
+              de l'impression avant de créer Printiva.
             </div>
           </div>
           

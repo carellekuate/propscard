@@ -24,7 +24,7 @@
     margin-bottom: 20px;
     font-weight: 700;
     text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-    color: #430fed;
+    color: #1976D2;
 }
 .hero-description {
   font-size: 1.5rem;
@@ -67,8 +67,8 @@
 
 .contact-info h2 {
   font-size: 2.5rem;
-  color: #430fed;
-  margin-bottom: 30px;
+      color: #1976D2;
+      margin-bottom: 30px;
   position: relative;
 }
 
@@ -79,7 +79,7 @@
   left: 0;
   width: 80px;
   height: 4px;
-  background: #430fed;
+  background: #1976D2;
 }
 
 .contact-description {
@@ -209,12 +209,12 @@
 
 .contact-form input:focus,
 .contact-form textarea:focus {
-  border-color: #430fed;
+  border-color: #1976D2;
   outline: none;
 }
 
 .submit-btn {
-  background: #430fed;
+  background: #1976D2;
   color: white;
   border: none;
   padding: 14px 28px;
@@ -228,7 +228,7 @@
 }
 
 .submit-btn:hover {
-  background: #430fed
+  background:#1976D2
 }
 
 .submit-btn:disabled {
@@ -293,7 +293,7 @@
 }
 
 .faq-item h3 {
-  color: #430fed;
+  color: #1976D2;
   margin-bottom: 15px;
   font-size: 1.3rem;
 }

@@ -71,8 +71,8 @@ function ContactPage() {
                 </div>
                 <div className="contact-text">
                   <h3>Email</h3>
-                  <p>contact@mkproduction.fr</p>
-                  <p>support@mkproduction.fr</p>
+                  <p>contact@Printivaproduction.fr</p>
+                  <p>support@Printivaproduction.fr</p>
                 </div>
               </div>
               

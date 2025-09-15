@@ -9,7 +9,7 @@ const BusinessCardRecto3 = ({ data = {} }) => {
     jobTitle = "Titre",
     phone = "(+237) 694587415",
     email = "card@gmail.com",
-    address = "Yaounde",
+    addressLine1  = "Yaounde",
     companyName = "Dental Logo",
     tagline = "TAGLINE"
   } = data;
@@ -31,7 +31,6 @@ const BusinessCardRecto3 = ({ data = {} }) => {
         width: '100%',
         height: '100%',
         backgroundColor: '#fcf1f1',
-        borderRadius: '20px',
         boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
         display: 'flex',
         position: 'relative',
@@ -42,7 +41,6 @@ const BusinessCardRecto3 = ({ data = {} }) => {
           width: '60%',
           height: '100%',
           backgroundColor: '#32a5f7',
-          borderRadius: '20px 0px 0px 20px',
           padding: '20px',
           color: 'white',
           boxSizing: 'border-box',
@@ -64,7 +62,7 @@ const BusinessCardRecto3 = ({ data = {} }) => {
           
           <div style={{ display: 'flex', alignItems: 'center', marginBottom: '12px' }}>
             <FaMapMarkerAlt style={{ marginRight: '10px', fontSize: '14px' }} />
-            <span style={{ fontSize: '12px' }}>{address}</span>
+            <span style={{ fontSize: '12px' }}>{addressLine1}</span>
           </div>
         </div>
         

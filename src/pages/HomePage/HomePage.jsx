@@ -3,8 +3,6 @@ import "./HomePageStyles.css";
 
 // Importation de l'image d'arrière-plan
 import mockupImage from "../../assets/images/mockup5_temp.jpg";
-// ...existing code...
-
 
 // Importation des images de cartes
 import card1 from "../../assets/images/fab.png";
@@ -186,25 +184,20 @@ function HomePage() {
         {/* Overlay sombre */}
         <div className="hero-overlay"></div>
         <div className="hero-content">
-          <h1> <span className="name"> Créez une première impression mémorable</span> </h1>
+          <h1> <span className="hero-title"> Créez une première impression mémorable</span> </h1>
           <p className="slogan">
-           <span className="name">  Concevez des cartes de visite qui reflètent votre identité
+           <span className="hero-subtitle">  Concevez des cartes de visite qui reflètent votre identité
             professionnelle.</span>
           </p>
-          <div className="search-bar">
-            <p className="hero-text">
-              Chez Printiva Cards, nous croyons que la première impression compte. <br/>
-               Votre carte de visite n’est pas seulement un bout de papier, <br/>
-               mais le reflet de votre identité professionnelle. <br/>
-            </p>
-
+          <div className="hero-text-container">
           </div>
+          <button className="cta-button">Commencer maintenant</button>
         </div>
       </div>
 
       {/* Nouveau carousel infini avec défilement horizontal et effet de zoom */}
       <div className="section recent-cards-section">
-        <h1>Cartes de visite les plus récentes</h1>
+        <h1 className="section-title">Cartes de visite les plus récentes</h1>
         
         <div className="card-carousel-container">
           <div className="carousel-wrapper">
@@ -260,9 +253,9 @@ function HomePage() {
 
       {/* Section des avis des utilisateurs */}
       <div className="section user-reviews-section">
-        <h1>Commentaires des Clients </h1>
+        <h1 className="section-title">Commentaires des Clients </h1>
         <div className="review-list">
-          <div className="review-item">
+          <div className="review-card">
             <div className="review-header">
               <img src={avatar1} alt="Avatar utilisateur" />
               <h4>Sophie L.</h4>
@@ -271,8 +264,15 @@ function HomePage() {
               "L'outil de création est incroyablement simple à utiliser et les
               designs sont superbes. J'ai reçu mes cartes en un temps record !"
             </p>
+            <div className="rating">
+              <span className="star">★</span>
+              <span className="star">★</span>
+              <span className="star">★</span>
+              <span className="star">★</span>
+              <span className="star">★</span>
+            </div>
           </div>
-          <div className="review-item">
+          <div className="review-card">
             <div className="review-header">
               <img src={avatar2} alt="Avatar utilisateur" />
               <h4>Marc D.</h4>
@@ -281,8 +281,15 @@ function HomePage() {
               "J'adore le large choix de modèles. J'ai pu créer une carte unique
               qui correspond parfaitement à mon entreprise."
             </p>
+            <div className="rating">
+              <span className="star">★</span>
+              <span className="star">★</span>
+              <span className="star">★</span>
+              <span className="star">★</span>
+              <span className="star">★</span>
+            </div>
           </div>
-          <div className="review-item">
+          <div className="review-card">
             <div className="review-header">
               <img src={avatar3} alt="Avatar utilisateur" />
               <h4>Laura P.</h4>
@@ -291,6 +298,13 @@ function HomePage() {
               "La qualité d'impression est exceptionnelle. Je recommande
               vivement ce site à tous mes contacts."
             </p>
+            <div className="rating">
+              <span className="star">★</span>
+              <span className="star">★</span>
+              <span className="star">★</span>
+              <span className="star">★</span>
+              <span className="star">★</span>
+            </div>
           </div>
         </div>
       </div>
@@ -298,41 +312,46 @@ function HomePage() {
       {/* Section Newsletter */}
       <div className="section newsletter-section">
         <div className="newsletter-content">
-          <h1>Actualites</h1>
-          <p>
+          <h1 className="section-title">Actualites</h1>
+          <p className="newsletter-text">
             Abonnez-vous à notre newsletter pour recevoir les dernières
             nouveautés et offres exclusives.
           </p>
           <div className="newsletter-form">
             <input type="email" placeholder="Entrez votre adresse e-mail" />
-            <button>S'abonner</button>
+            <button className="subscribe-button">S'abonner</button>
           </div>
         </div>
       </div>
 
       {/* Section de comparaison des offres */}
       <div className="section offers-comparison-section">
-        <h1>Offres Concurrentielles </h1>
+        <h1 className="section-title">Offres Concurrentielles </h1>
         <div className="comparison-table">
-          <div className="offer-column standard-user">
-            <h3>Utilisateur Standard</h3>
+          <div className="offer-card standard-user">
+            <div className="offer-header">
+              <h3>Utilisateur Standard</h3>
+            </div>
             <ul>
-              <li>Accès aux modèles gratuits</li>
-              <li>Impression de qualité standard</li>
-              <li>Support e-mail</li>
-              <li>
-                <span className="unavailable">Sauvegarde des projets</span>
-              </li>
+              <li>✓ Accès aux modèles gratuits</li>
+              <li>✓ Impression de qualité standard</li>
+              <li>✓ Support e-mail</li>
+              <li className="unavailable">✗ Sauvegarde des projets</li>
             </ul>
+            <button className="offer-button">Gratuit</button>
           </div>
-          <div className="offer-column loggedin-user">
-            <h3>Utilisateur Connecté</h3>
+          <div className="offer-card loggedin-user">
+            <div className="offer-header premium">
+              <h3>Utilisateur Connecté</h3>
+              <span className="premium-badge">Premium</span>
+            </div>
             <ul>
-              <li>Accès à tous les modèles (gratuits et premium)</li>
-              <li>Options de papier et finitions premium</li>
-              <li>Support prioritaire</li>
-              <li>Sauvegarde de vos projets</li>
+              <li>✓ Accès à tous les modèles</li>
+              <li>✓ Options de papier premium</li>
+              <li>✓ Support prioritaire</li>
+              <li>✓ Sauvegarde de vos projets</li>
             </ul>
+            <button className="offer-button primary">À partir de 9,99€/mois</button>
           </div>
         </div>
       </div>

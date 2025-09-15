@@ -77,12 +77,12 @@ const BusinessCardVerso4 = ({ data = {} }) => {
         fontSize: '10px'
       }}>
         <div>
-          <div style={{ marginBottom: '3px' }}>{phone}</div>
-          <div>{email}</div>
+          <div style={{ marginBottom: '5px' }}>{phone}</div>
+       
         </div>
         <div style={{ textAlign: 'right' }}>
         
-          <div>Follow us on social media</div>
+          <div></div>
         </div>
       </div>
 

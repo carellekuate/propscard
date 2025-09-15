@@ -12,16 +12,17 @@ const BusinessCardRecto4 = ({ data = {} }) => {
 
   return (
     <div style={{
-      width: '340px',
+       width: '340px',
       height: '216px',
-      background: 'white',
-      border: '1px solid #2c3e50',
-      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+      margin: 0,
+      padding: 0,
       display: 'flex',
+      boxShadow: '0 10px 30px rgba(0, 0, 0, 0.15)',
       flexDirection: 'column',
-      fontFamily: 'sans-serif',
+      alignItems: 'flex-start',
+      justifyContent: 'flex-start',
       overflow: 'hidden',
-      position: 'relative'
+      border : '1px solid #ddd',
     }}>
       {/* En-tête avec nom de l'entreprise */}
       <div style={{
